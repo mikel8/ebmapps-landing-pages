@@ -4,6 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AutoScroll – Hands-Free Reading for Chrome</title>
+  <!-- Google Ads Conversion Tracking — replace AW-XXXXXXXXXX/YYYYYYYYYYYY with your IDs -->
+  <!-- Get IDs from: Google Ads → Goals → Conversions → New conversion action → Website -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-XXXXXXXXXX');
+    function trackInstallClick() {
+      gtag('event', 'conversion', { 'send_to': 'AW-XXXXXXXXXX/YYYYYYYYYYYY' });
+    }
+  </script>
   <meta name="description" content="Set your reading speed and scroll any web page automatically. No mouse needed. Free Chrome extension with Pro upgrade.">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -74,14 +86,14 @@
 
 <nav>
   <a class="nav-logo" href="#">AutoScroll</a>
-  <a class="nav-cta" href="https://chromewebstore.google.com/detail/autoscroll/dadolphlcfbijempflfmbghofiodpcki" target="_blank" rel="noopener">Add to Chrome — Free</a>
+  <a class="nav-cta" href="https://chromewebstore.google.com/detail/autoscroll/dadolphlcfbijempflfmbghofiodpcki" target="_blank" rel="noopener" onclick="trackInstallClick()">Add to Chrome — Free</a>
 </nav>
 
 <section class="hero">
   <div class="badge">Chrome Extension · 1,200+ weekly users</div>
   <h1>Read any page<br><span>hands-free</span></h1>
   <p class="hero-sub">Set your pace, press a key, and AutoScroll keeps your page moving — no mouse, no interruptions.</p>
-  <a class="hero-cta" href="https://chromewebstore.google.com/detail/autoscroll/dadolphlcfbijempflfmbghofiodpcki" target="_blank" rel="noopener">Get AutoScroll Free</a>
+  <a class="hero-cta" href="https://chromewebstore.google.com/detail/autoscroll/dadolphlcfbijempflfmbghofiodpcki" target="_blank" rel="noopener" onclick="trackInstallClick()">Get AutoScroll Free</a>
   <p class="hero-note">Free to use · Pro plan available · No account required</p>
 </section>
 
@@ -177,7 +189,7 @@
 <div class="cta-footer">
   <h2>Ready to read hands-free?</h2>
   <p>Join 1,200+ readers who use AutoScroll every week.</p>
-  <a class="hero-cta" href="https://chromewebstore.google.com/detail/autoscroll/dadolphlcfbijempflfmbghofiodpcki" target="_blank" rel="noopener">Get AutoScroll Free</a>
+  <a class="hero-cta" href="https://chromewebstore.google.com/detail/autoscroll/dadolphlcfbijempflfmbghofiodpcki" target="_blank" rel="noopener" onclick="trackInstallClick()">Get AutoScroll Free</a>
 </div>
 
 <footer>
