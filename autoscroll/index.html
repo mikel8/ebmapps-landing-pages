@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoScroll – Hands-Free Reading for Chrome</title>
+  <meta name="description" content="Set your reading speed and scroll any web page automatically. No mouse needed. Free Chrome extension with Pro upgrade.">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f172a; color: #e2e8f0; line-height: 1.6; }
+
+    /* NAV */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 32px; border-bottom: 1px solid #1e293b; }
+    .nav-logo { font-weight: 700; font-size: 18px; color: #fff; text-decoration: none; }
+    .nav-cta { background: #22c55e; color: #000; font-weight: 600; font-size: 14px; padding: 8px 20px; border-radius: 8px; text-decoration: none; transition: background .2s; }
+    .nav-cta:hover { background: #16a34a; }
+
+    /* HERO */
+    .hero { text-align: center; padding: 80px 24px 60px; max-width: 680px; margin: 0 auto; }
+    .badge { display: inline-block; background: #1e293b; border: 1px solid #334155; color: #94a3b8; font-size: 13px; padding: 4px 14px; border-radius: 100px; margin-bottom: 24px; }
+    h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.15; color: #fff; margin-bottom: 20px; }
+    h1 span { color: #22c55e; }
+    .hero-sub { font-size: 18px; color: #94a3b8; margin-bottom: 36px; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .hero-cta { display: inline-block; background: #22c55e; color: #000; font-weight: 700; font-size: 17px; padding: 16px 36px; border-radius: 12px; text-decoration: none; transition: background .2s, transform .1s; }
+    .hero-cta:hover { background: #16a34a; transform: translateY(-1px); }
+    .hero-note { margin-top: 14px; font-size: 13px; color: #64748b; }
+
+    /* DEMO GIF PLACEHOLDER */
+    .demo { margin: 48px auto; max-width: 720px; padding: 0 24px; }
+    .demo-frame { background: #1e293b; border: 1px solid #334155; border-radius: 16px; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; color: #475569; font-size: 14px; overflow: hidden; }
+    .demo-frame img { width: 100%; height: 100%; object-fit: cover; border-radius: 16px; }
+
+    /* FEATURES */
+    .features { max-width: 900px; margin: 64px auto; padding: 0 24px; }
+    .features-heading { text-align: center; font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 48px; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+    .feature-card { background: #1e293b; border: 1px solid #334155; border-radius: 16px; padding: 28px 24px; }
+    .feature-icon { font-size: 28px; margin-bottom: 12px; }
+    .feature-title { font-weight: 600; font-size: 16px; color: #fff; margin-bottom: 8px; }
+    .feature-desc { font-size: 14px; color: #94a3b8; }
+
+    /* SOCIAL PROOF */
+    .proof { background: #1e293b; border-top: 1px solid #334155; border-bottom: 1px solid #334155; padding: 48px 24px; text-align: center; margin: 64px 0; }
+    .proof-stats { display: flex; justify-content: center; gap: 64px; flex-wrap: wrap; }
+    .stat-num { font-size: 36px; font-weight: 800; color: #22c55e; }
+    .stat-label { font-size: 13px; color: #64748b; margin-top: 4px; }
+
+    /* PLANS */
+    .plans { max-width: 800px; margin: 0 auto 80px; padding: 0 24px; text-align: center; }
+    .plans-heading { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .plans-sub { color: #94a3b8; margin-bottom: 40px; }
+    .plans-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 540px) { .plans-grid { grid-template-columns: 1fr; } }
+    .plan-card { background: #1e293b; border: 1px solid #334155; border-radius: 16px; padding: 28px 24px; text-align: left; }
+    .plan-card.featured { border-color: #22c55e; }
+    .plan-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: #22c55e; margin-bottom: 8px; }
+    .plan-name { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .plan-price { font-size: 15px; color: #94a3b8; margin-bottom: 20px; }
+    .plan-features { list-style: none; font-size: 14px; color: #94a3b8; display: flex; flex-direction: column; gap: 8px; }
+    .plan-features li::before { content: "✓  "; color: #22c55e; font-weight: 700; }
+
+    /* CTA FOOTER */
+    .cta-footer { text-align: center; padding: 64px 24px 80px; }
+    .cta-footer h2 { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .cta-footer p { color: #94a3b8; margin-bottom: 32px; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid #1e293b; padding: 24px 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 13px; color: #475569; }
+    footer a { color: #475569; text-decoration: none; }
+    footer a:hover { color: #94a3b8; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">AutoScroll</a>
+  <a class="nav-cta" href="https://chromewebstore.google.com/detail/autoscroll/dadolphlcfbijempflfmbghofiodpcki" target="_blank" rel="noopener">Add to Chrome — Free</a>
+</nav>
+
+<section class="hero">
+  <div class="badge">Chrome Extension · 1,200+ weekly users</div>
+  <h1>Read any page<br><span>hands-free</span></h1>
+  <p class="hero-sub">Set your pace, press a key, and AutoScroll keeps your page moving — no mouse, no interruptions.</p>
+  <a class="hero-cta" href="https://chromewebstore.google.com/detail/autoscroll/dadolphlcfbijempflfmbghofiodpcki" target="_blank" rel="noopener">Get AutoScroll Free</a>
+  <p class="hero-note">Free to use · Pro plan available · No account required</p>
+</section>
+
+<div class="demo">
+  <div class="demo-frame">
+    <!-- Replace src with a real screenshot or GIF -->
+    <span>[ Screenshot / GIF of AutoScroll in action ]</span>
+  </div>
+</div>
+
+<section class="features">
+  <h2 class="features-heading">Everything you need to read faster</h2>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">⌨️</div>
+      <div class="feature-title">Keyboard Toggle</div>
+      <div class="feature-desc">Start and stop scrolling with a single key press — never touch your mouse mid-read.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎚️</div>
+      <div class="feature-title">Adjustable Speed</div>
+      <div class="feature-desc">Fine-tune scrolling speed to match exactly how fast you read, from leisurely to rapid.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌐</div>
+      <div class="feature-title">Works Everywhere</div>
+      <div class="feature-desc">Articles, docs, research papers, newsletters — AutoScroll works on any webpage.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <div class="feature-title">Instant Setup</div>
+      <div class="feature-desc">No account, no configuration. Add it to Chrome and start reading hands-free in seconds.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💾</div>
+      <div class="feature-title">Saved Presets (Pro)</div>
+      <div class="feature-desc">Save your preferred speed per site so your setup is always ready when you return.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🚫</div>
+      <div class="feature-title">No Ads, No Bloat</div>
+      <div class="feature-desc">Clean, minimal popup. No trackers, no data collection, no distractions.</div>
+    </div>
+  </div>
+</section>
+
+<div class="proof">
+  <div class="proof-stats">
+    <div>
+      <div class="stat-num">1,200+</div>
+      <div class="stat-label">Weekly active users</div>
+    </div>
+    <div>
+      <div class="stat-num">4.5★</div>
+      <div class="stat-label">Chrome Web Store rating</div>
+    </div>
+    <div>
+      <div class="stat-num">Free</div>
+      <div class="stat-label">To get started</div>
+    </div>
+  </div>
+</div>
+
+<section class="plans">
+  <h2 class="plans-heading">Free forever, upgrade when ready</h2>
+  <p class="plans-sub">Start with the free tier — upgrade to Pro when you want more.</p>
+  <div class="plans-grid">
+    <div class="plan-card">
+      <div class="plan-label">Free</div>
+      <div class="plan-name">AutoScroll Free</div>
+      <div class="plan-price">Always free</div>
+      <ul class="plan-features">
+        <li>Adjustable scroll speed</li>
+        <li>Keyboard toggle</li>
+        <li>Works on any website</li>
+        <li>No account needed</li>
+      </ul>
+    </div>
+    <div class="plan-card featured">
+      <div class="plan-label">Pro</div>
+      <div class="plan-name">AutoScroll Pro</div>
+      <div class="plan-price">Monthly · Yearly · Lifetime</div>
+      <ul class="plan-features">
+        <li>Everything in Free</li>
+        <li>Speed presets per site</li>
+        <li>Higher speed ceiling</li>
+        <li>Priority support</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="cta-footer">
+  <h2>Ready to read hands-free?</h2>
+  <p>Join 1,200+ readers who use AutoScroll every week.</p>
+  <a class="hero-cta" href="https://chromewebstore.google.com/detail/autoscroll/dadolphlcfbijempflfmbghofiodpcki" target="_blank" rel="noopener">Get AutoScroll Free</a>
+</div>
+
+<footer>
+  <span>© 2026 EBM Apps</span>
+  <div style="display:flex;gap:24px;">
+    <a href="https://ebmapps.cc">ebmapps.cc</a>
+    <a href="https://ebmapps.cc/privacy">Privacy Policy</a>
+    <a href="mailto:support@ebmapps.cc">Support</a>
+  </div>
+</footer>
+
+</body>
+</html>
