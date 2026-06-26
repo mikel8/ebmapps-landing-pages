@@ -2,10 +2,147 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>EBM Apps</title>
-  <meta http-equiv="refresh" content="0; url=https://ebmapps.cc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EBM Apps – Productivity Chrome Extensions</title>
+  <meta name="description" content="EBM Apps makes Chrome extensions that help you read, browse, and work faster. AutoScroll, VideoSpeeder, and Page Auto-Refresher.">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f172a; color: #e2e8f0; line-height: 1.6; }
+
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 32px; border-bottom: 1px solid #1e293b; }
+    .nav-logo { font-weight: 800; font-size: 20px; color: #fff; text-decoration: none; }
+    .nav-logo span { color: #22c55e; }
+    .nav-links { display: flex; gap: 24px; }
+    .nav-links a { color: #94a3b8; text-decoration: none; font-size: 14px; }
+    .nav-links a:hover { color: #fff; }
+
+    .hero { text-align: center; padding: 80px 24px 60px; max-width: 700px; margin: 0 auto; }
+    .hero-badge { display: inline-block; background: #1e293b; border: 1px solid #334155; color: #94a3b8; font-size: 13px; padding: 4px 14px; border-radius: 100px; margin-bottom: 24px; }
+    .hero h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.15; color: #fff; margin-bottom: 16px; }
+    .hero h1 span { color: #22c55e; }
+    .hero p { font-size: 18px; color: #94a3b8; max-width: 500px; margin: 0 auto; }
+
+    .apps { max-width: 1000px; margin: 64px auto 80px; padding: 0 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
+
+    .app-card { background: #1e293b; border: 1px solid #334155; border-radius: 20px; padding: 32px 28px; display: flex; flex-direction: column; transition: border-color .2s; }
+    .app-card:hover { border-color: #22c55e; }
+    .app-icon { font-size: 40px; margin-bottom: 16px; }
+    .app-name { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .app-desc { font-size: 14px; color: #94a3b8; margin-bottom: 20px; flex: 1; }
+    .app-features { list-style: none; margin-bottom: 28px; display: flex; flex-direction: column; gap: 6px; }
+    .app-features li { font-size: 13px; color: #94a3b8; }
+    .app-features li::before { content: "✓  "; color: #22c55e; font-weight: 700; }
+    .app-cta { display: inline-block; background: #22c55e; color: #000; font-weight: 700; font-size: 14px; padding: 12px 24px; border-radius: 10px; text-decoration: none; text-align: center; transition: background .2s; }
+    .app-cta:hover { background: #16a34a; }
+    .app-plans { font-size: 12px; color: #64748b; text-align: center; margin-top: 10px; }
+
+    .stats { max-width: 800px; margin: 0 auto 64px; padding: 0 24px; display: flex; justify-content: center; gap: 64px; flex-wrap: wrap; text-align: center; }
+    .stat-num { font-size: 36px; font-weight: 800; color: #22c55e; }
+    .stat-label { font-size: 13px; color: #64748b; margin-top: 4px; }
+
+    .about { background: #1e293b; border-top: 1px solid #334155; border-bottom: 1px solid #334155; padding: 64px 24px; text-align: center; }
+    .about-inner { max-width: 680px; margin: 0 auto; }
+    .about h2 { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 16px; }
+    .about p { color: #94a3b8; font-size: 16px; line-height: 1.7; }
+
+    footer { border-top: 1px solid #1e293b; padding: 24px 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 13px; color: #475569; }
+    footer a { color: #475569; text-decoration: none; }
+    footer a:hover { color: #94a3b8; }
+  </style>
 </head>
 <body>
-  <a href="https://ebmapps.cc">ebmapps.cc</a>
+
+<nav>
+  <a class="nav-logo" href="#">EBM<span>Apps</span></a>
+  <div class="nav-links">
+    <a href="#apps">Extensions</a>
+    <a href="#about">About</a>
+    <a href="mailto:support@ebmapps.cc">Support</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">Chrome Extensions · Made for power users</div>
+  <h1>Browse smarter,<br><span>work faster</span></h1>
+  <p>EBM Apps builds focused Chrome extensions that remove friction from everyday browsing tasks.</p>
+</section>
+
+<section class="apps" id="apps">
+
+  <div class="app-card">
+    <div class="app-icon">📜</div>
+    <div class="app-name">AutoScroll</div>
+    <div class="app-desc">Hands-free automatic scrolling for any web page. Set your speed, press a key, and read without touching your mouse.</div>
+    <ul class="app-features">
+      <li>Adjustable scroll speed</li>
+      <li>Keyboard toggle — no mouse needed</li>
+      <li>Works on any website</li>
+      <li>Speed presets per site (Pro)</li>
+    </ul>
+    <a class="app-cta" href="https://apps.ebmapps.cc/autoscroll" target="_blank" rel="noopener">Learn More &amp; Install</a>
+    <div class="app-plans">Free · Pro from $1.99/mo</div>
+  </div>
+
+  <div class="app-card">
+    <div class="app-icon">⚡</div>
+    <div class="app-name">VideoSpeeder</div>
+    <div class="app-desc">Speed control overlay for any browser video. Watch lectures, tutorials, and recordings at your pace — on any site.</div>
+    <ul class="app-features">
+      <li>Speed control on any video</li>
+      <li>Keyboard shortcuts</li>
+      <li>Works on YouTube, Udemy &amp; more</li>
+      <li>Persistent speed settings (Pro)</li>
+    </ul>
+    <a class="app-cta" href="https://chromewebstore.google.com/detail/video-speeder/glpgemlnkgcploekalkdbamgalojgajk" target="_blank" rel="noopener">Add to Chrome — Free</a>
+    <div class="app-plans">Free · Pro from $1.99/mo</div>
+  </div>
+
+  <div class="app-card">
+    <div class="app-icon">🔄</div>
+    <div class="app-name">Page Auto-Refresher</div>
+    <div class="app-desc">Automatically refresh any tab on a schedule. Monitor stock pages, live dashboards, and time-sensitive content effortlessly.</div>
+    <ul class="app-features">
+      <li>Custom refresh intervals</li>
+      <li>Stop after N refreshes</li>
+      <li>Multi-tab monitoring (Pro)</li>
+      <li>Detached floating controls (Pro)</li>
+    </ul>
+    <a class="app-cta" href="https://chromewebstore.google.com/detail/page-auto-refresher/nfokpjpnhiaflakmjpaedhlelfbelkjj" target="_blank" rel="noopener">Add to Chrome — Free</a>
+    <div class="app-plans">Free · Pro from $1.99/mo</div>
+  </div>
+
+</section>
+
+<div class="stats">
+  <div>
+    <div class="stat-num">3</div>
+    <div class="stat-label">Chrome extensions</div>
+  </div>
+  <div>
+    <div class="stat-num">3,000+</div>
+    <div class="stat-label">Weekly active users</div>
+  </div>
+  <div>
+    <div class="stat-num">Free</div>
+    <div class="stat-label">To get started</div>
+  </div>
+</div>
+
+<div class="about" id="about">
+  <div class="about-inner">
+    <h2>About EBM Apps</h2>
+    <p>EBM Apps is an independent developer studio building focused, high-quality Chrome extensions. Each tool solves one problem well — no bloat, no trackers, no unnecessary permissions. We use Google Ads to help people discover our extensions and grow our user base.</p>
+  </div>
+</div>
+
+<footer>
+  <span>© 2026 EBM Apps</span>
+  <div style="display:flex;gap:24px;">
+    <a href="https://ebmapps.cc">ebmapps.cc</a>
+    <a href="/privacy">Privacy Policy</a>
+    <a href="mailto:support@ebmapps.cc">Support</a>
+  </div>
+</footer>
+
 </body>
 </html>
