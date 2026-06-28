@@ -57,6 +57,7 @@
     }
     .featured-badge { position: absolute; top: 16px; right: 20px; background: #a855f7; color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; }
     .featured-icon { font-size: 56px; flex-shrink: 0; }
+    .featured-icon img { width: 96px; height: 96px; border-radius: 22px; display: block; box-shadow: 0 8px 32px rgba(168,85,247,.35); }
     .featured-body { flex: 1; }
     .featured-platform { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: #a78bfa; margin-bottom: 6px; }
     .featured-name { font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 8px; }
@@ -78,6 +79,7 @@
     .app-card:hover { border-color: #475569; }
     .app-card[data-cat="ios"]:hover { border-color: #a855f7; }
     .app-icon { font-size: 40px; margin-bottom: 16px; }
+    .app-icon img { width: 64px; height: 64px; border-radius: 14px; display: block; }
     .app-name { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 8px; }
     .app-tag { display: inline-block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; padding: 2px 8px; border-radius: 100px; margin-bottom: 10px; }
     .app-tag.chrome { background: rgba(34,197,94,.12); color: #22c55e; border: 1px solid rgba(34,197,94,.25); }
@@ -146,7 +148,7 @@
 <div class="featured-banner" id="featured-lyricshub">
   <div class="featured-card">
     <div class="featured-badge">New iOS App</div>
-    <div class="featured-icon">🎵</div>
+    <div class="featured-icon"><img src="/icons/lyricshub.png" alt="LyricsHub icon"></div>
     <div class="featured-body">
       <div class="featured-platform">iOS App · iPhone &amp; iPad</div>
       <div class="featured-name">LyricsHub</div>
@@ -172,7 +174,7 @@
 <section class="apps" id="apps">
 
   <div class="app-card" data-cat="extensions">
-    <div class="app-icon">📜</div>
+    <div class="app-icon"><img src="/icons/autoscroll.png" alt="AutoScroll icon"></div>
     <div class="app-tag chrome">Chrome</div>
     <div class="app-name">AutoScroll</div>
     <div class="app-desc">Hands-free automatic scrolling for any web page. Set your speed, press a key, and read without touching your mouse.</div>
@@ -187,7 +189,7 @@
   </div>
 
   <div class="app-card" data-cat="extensions">
-    <div class="app-icon">⚡</div>
+    <div class="app-icon"><img src="/icons/videospeeder.png" alt="VideoSpeeder icon"></div>
     <div class="app-tag chrome">Chrome</div>
     <div class="app-name">VideoSpeeder</div>
     <div class="app-desc">Speed control overlay for any browser video. Watch lectures, tutorials, and recordings at your pace — on any site.</div>
@@ -202,7 +204,7 @@
   </div>
 
   <div class="app-card" data-cat="extensions">
-    <div class="app-icon">🔄</div>
+    <div class="app-icon"><img src="/icons/autorefresher.png" alt="Page Auto-Refresher icon"></div>
     <div class="app-tag chrome">Chrome</div>
     <div class="app-name">Page Auto-Refresher</div>
     <div class="app-desc">Automatically refresh any tab on a schedule. Monitor stock pages, live dashboards, and time-sensitive content effortlessly.</div>
