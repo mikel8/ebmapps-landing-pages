@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LyricsHub – Lyrics Finder &amp; Song Search</title>
-  <meta name="description" content="Find lyrics for any song instantly. Search by title, artist, or even a few words you remember. Free on the App Store.">
+  <title>Lyrics Finder – Find Songs From One Lyric</title>
+  <meta name="description" content="Type any lyric fragment you remember — even if it's not exact — and Lyrics Finder identifies the song in seconds. Free on the App Store.">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0d0d1a; color: #e2e8f0; line-height: 1.6; }
@@ -20,34 +20,19 @@
     .badge { display: inline-block; background: #1e1b3a; border: 1px solid #3b3270; color: #a78bfa; font-size: 13px; padding: 4px 14px; border-radius: 100px; margin-bottom: 24px; }
     h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.15; color: #fff; margin-bottom: 20px; }
     h1 span { color: #a855f7; }
-    .hero-sub { font-size: 18px; color: #94a3b8; margin-bottom: 36px; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .hero-sub { font-size: 18px; color: #94a3b8; margin-bottom: 36px; max-width: 520px; margin-left: auto; margin-right: auto; }
     .hero-cta { display: inline-flex; align-items: center; gap: 10px; background: #a855f7; color: #fff; font-weight: 700; font-size: 17px; padding: 16px 36px; border-radius: 12px; text-decoration: none; transition: background .2s, transform .1s; }
     .hero-cta:hover { background: #9333ea; transform: translateY(-1px); }
     .hero-cta svg { width: 22px; height: 22px; fill: currentColor; flex-shrink: 0; }
     .hero-note { margin-top: 14px; font-size: 13px; color: #64748b; }
 
-    /* DEMO */
-    .demo { margin: 48px auto; max-width: 720px; padding: 0 24px; }
-    .demo-frame { background: #1e1b3a; border: 1px solid #3b3270; border-radius: 16px; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; color: #475569; font-size: 14px; overflow: hidden; }
-    .demo-frame img { width: 100%; height: 100%; object-fit: cover; border-radius: 16px; }
-
-    /* FEATURES */
-    .features { max-width: 900px; margin: 64px auto; padding: 0 24px; }
-    .features-heading { text-align: center; font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 48px; }
-    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
-    .feature-card { background: #1e1b3a; border: 1px solid #3b3270; border-radius: 16px; padding: 28px 24px; }
-    .feature-icon { font-size: 28px; margin-bottom: 12px; }
-    .feature-title { font-weight: 600; font-size: 16px; color: #fff; margin-bottom: 8px; }
-    .feature-desc { font-size: 14px; color: #94a3b8; }
-
-    /* SOCIAL PROOF */
-    .proof { background: #1e1b3a; border-top: 1px solid #3b3270; border-bottom: 1px solid #3b3270; padding: 48px 24px; text-align: center; margin: 64px 0; }
-    .proof-stats { display: flex; justify-content: center; gap: 64px; flex-wrap: wrap; }
-    .stat-num { font-size: 36px; font-weight: 800; color: #a855f7; }
-    .stat-label { font-size: 13px; color: #64748b; margin-top: 4px; }
+    /* DEMO VIDEO */
+    .demo { margin: 48px auto; max-width: 340px; padding: 0 24px; }
+    .demo-frame { background: #1e1b3a; border: 1px solid #3b3270; border-radius: 28px; overflow: hidden; aspect-ratio: 9/19.5; box-shadow: 0 24px 64px rgba(168,85,247,.18); }
+    .demo-frame video { width: 100%; height: 100%; object-fit: cover; display: block; }
 
     /* HOW IT WORKS */
-    .how { max-width: 800px; margin: 0 auto 80px; padding: 0 24px; text-align: center; }
+    .how { max-width: 800px; margin: 64px auto 0; padding: 0 24px; text-align: center; }
     .how-heading { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 12px; }
     .how-sub { color: #94a3b8; margin-bottom: 48px; }
     .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; }
@@ -55,6 +40,22 @@
     .step-num { width: 44px; height: 44px; border-radius: 50%; background: #a855f7; color: #fff; font-weight: 700; font-size: 18px; display: flex; align-items: center; justify-content: center; }
     .step-title { font-weight: 600; color: #fff; }
     .step-desc { font-size: 14px; color: #94a3b8; text-align: center; }
+
+    /* FEATURES */
+    .features { max-width: 900px; margin: 80px auto; padding: 0 24px; }
+    .features-heading { text-align: center; font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 48px; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+    .feature-card { background: #1e1b3a; border: 1px solid #3b3270; border-radius: 16px; padding: 28px 24px; }
+    .feature-card.highlight { border-color: #a855f7; background: #1a1030; }
+    .feature-icon { font-size: 28px; margin-bottom: 12px; }
+    .feature-title { font-weight: 600; font-size: 16px; color: #fff; margin-bottom: 8px; }
+    .feature-desc { font-size: 14px; color: #94a3b8; }
+
+    /* SOCIAL PROOF */
+    .proof { background: #1e1b3a; border-top: 1px solid #3b3270; border-bottom: 1px solid #3b3270; padding: 48px 24px; text-align: center; margin: 0 0 64px; }
+    .proof-stats { display: flex; justify-content: center; gap: 64px; flex-wrap: wrap; }
+    .stat-num { font-size: 36px; font-weight: 800; color: #a855f7; }
+    .stat-label { font-size: 13px; color: #64748b; margin-top: 4px; }
 
     /* CTA FOOTER */
     .cta-footer { text-align: center; padding: 64px 24px 80px; }
@@ -70,35 +71,58 @@
 <body>
 
 <nav>
-  <a class="nav-logo" href="#">🎵 LyricsHub</a>
-  <a class="nav-cta" href="https://apps.apple.com/us/app/lyrics-finder-song-search/id6748971390" target="_blank" rel="noopener">Download Free</a>
+  <a class="nav-logo" href="#">🎵 Lyrics Finder</a>
+  <a class="nav-cta" href="https://apps.apple.com/us/app/lyrics-finder-song-search/id6748971390" target="_blank" rel="noopener">Find My Song — Free</a>
 </nav>
 
 <section class="hero">
   <div class="badge">iOS App · App Store</div>
-  <h1>Find any song's lyrics <span>instantly</span></h1>
-  <p class="hero-sub">Search by song title, artist, or even just a few words you remember. LyricsHub finds the full lyrics in seconds.</p>
+  <h1>Remember one lyric?<br><span>Find the song.</span></h1>
+  <p class="hero-sub">Type any fragment you remember — even if the words aren't exact. Lyrics Finder identifies the song and opens the full lyrics in seconds.</p>
   <a class="hero-cta" href="https://apps.apple.com/us/app/lyrics-finder-song-search/id6748971390" target="_blank" rel="noopener">
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-    Download on the App Store
+    Download Free on the App Store
   </a>
-  <p class="hero-note">Free to download · iPhone &amp; iPad</p>
+  <p class="hero-note">Free to download · iPhone &amp; iPad · No microphone needed</p>
 </section>
 
 <div class="demo">
   <div class="demo-frame">
-    <!-- Replace src with a real screenshot or GIF -->
-    <span>[ Screenshot of LyricsHub in action ]</span>
+    <video autoplay muted loop playsinline preload="auto">
+      <source src="demo.mov" type="video/mp4">
+    </video>
   </div>
 </div>
+
+<section class="how">
+  <h2 class="how-heading">How it works</h2>
+  <p class="how-sub">No microphone. No humming. Just type what you remember.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-title">Type any lyric</div>
+      <div class="step-desc">Enter a fragment you remember — even a rough approximation works.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-title">Song found</div>
+      <div class="step-desc">Lyrics Finder identifies the most likely song and artist in seconds.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-title">Full lyrics open</div>
+      <div class="step-desc">Read the complete lyrics, save them, copy, or share — all in one tap.</div>
+    </div>
+  </div>
+</section>
 
 <section class="features">
   <h2 class="features-heading">Everything a music lover needs</h2>
   <div class="features-grid">
-    <div class="feature-card">
-      <div class="feature-icon">🔍</div>
-      <div class="feature-title">Instant Search</div>
-      <div class="feature-desc">Type a song title, artist name, or even a lyric snippet — results appear as you type.</div>
+    <div class="feature-card highlight">
+      <div class="feature-icon">🔎</div>
+      <div class="feature-title">Find by Lyric Fragment</div>
+      <div class="feature-desc">Type any line you half-remember and get the song title and artist — even when the words aren't perfect.</div>
     </div>
     <div class="feature-card">
       <div class="feature-icon">🎤</div>
@@ -106,14 +130,14 @@
       <div class="feature-desc">Get complete, accurate lyrics for millions of songs across all genres and eras.</div>
     </div>
     <div class="feature-card">
-      <div class="feature-icon">🌐</div>
-      <div class="feature-title">Huge Music Library</div>
-      <div class="feature-desc">From top chart hits to deep cuts and classics — LyricsHub has them covered.</div>
+      <div class="feature-icon">🔍</div>
+      <div class="feature-title">Instant Search</div>
+      <div class="feature-desc">Search by song title or artist name — results appear as you type.</div>
     </div>
     <div class="feature-card">
       <div class="feature-icon">⭐</div>
       <div class="feature-title">Save Favorites</div>
-      <div class="feature-desc">Bookmark songs you love so their lyrics are always one tap away, even offline.</div>
+      <div class="feature-desc">Bookmark songs so their lyrics are always one tap away, even offline.</div>
     </div>
     <div class="feature-card">
       <div class="feature-icon">📋</div>
@@ -123,7 +147,7 @@
     <div class="feature-card">
       <div class="feature-icon">🎨</div>
       <div class="feature-title">Clean, Readable UI</div>
-      <div class="feature-desc">No clutter, no pop-ups. Just beautiful lyrics displayed in a distraction-free layout.</div>
+      <div class="feature-desc">No clutter, no pop-ups. Just beautiful lyrics in a distraction-free layout.</div>
     </div>
   </div>
 </section>
@@ -140,39 +164,17 @@
     </div>
     <div>
       <div class="stat-num">Instant</div>
-      <div class="stat-label">Lyric results</div>
+      <div class="stat-label">Results from one lyric</div>
     </div>
   </div>
 </div>
 
-<section class="how">
-  <h2 class="how-heading">Find any lyrics in 3 steps</h2>
-  <p class="how-sub">No account. No setup. Just open and search.</p>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <div class="step-title">Open LyricsHub</div>
-      <div class="step-desc">Download the app and open it — no sign-up required.</div>
-    </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <div class="step-title">Search Your Song</div>
-      <div class="step-desc">Enter the song name, artist, or any words you remember from the lyrics.</div>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <div class="step-title">Read &amp; Enjoy</div>
-      <div class="step-desc">Tap the result and the full lyrics load instantly. Save, copy, or share.</div>
-    </div>
-  </div>
-</section>
-
 <div class="cta-footer">
-  <h2>Never forget a lyric again.</h2>
-  <p>Download LyricsHub free — millions of songs at your fingertips.</p>
+  <h2>Never lose a song again.</h2>
+  <p>Get unlimited lyric-fragment searches, full lyrics, and saved favorites.</p>
   <a class="hero-cta" href="https://apps.apple.com/us/app/lyrics-finder-song-search/id6748971390" target="_blank" rel="noopener">
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-    Download on the App Store
+    Download Free on the App Store
   </a>
 </div>
 
