@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClipFlow AI – TikTok Content Publishing Workflow</title>
+  <meta name="description" content="ClipFlow AI helps creators prepare and publish short-form video content to TikTok through TikTok's authorized APIs. Users review and approve every post.">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0d0f1a; color: #e2e8f0; line-height: 1.7; }
+
+    /* NAV */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 32px; border-bottom: 1px solid #1e2235; background: #0d0f1a; position: sticky; top: 0; z-index: 50; }
+    .nav-logo { font-weight: 800; font-size: 18px; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+    .nav-links { display: flex; gap: 20px; align-items: center; }
+    .nav-links a { color: #94a3b8; text-decoration: none; font-size: 14px; }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta { background: #e85d04; color: #fff !important; font-weight: 600; font-size: 14px; padding: 8px 18px; border-radius: 8px; text-decoration: none !important; }
+    .nav-cta:hover { background: #c84d02 !important; }
+
+    /* HERO */
+    .hero { text-align: center; padding: 80px 24px 64px; max-width: 740px; margin: 0 auto; }
+    .badge { display: inline-block; background: #1a1d2e; border: 1px solid #2d3250; color: #94a3b8; font-size: 13px; padding: 4px 14px; border-radius: 100px; margin-bottom: 24px; }
+    h1 { font-size: clamp(30px, 5vw, 50px); font-weight: 800; line-height: 1.15; color: #fff; margin-bottom: 20px; }
+    h1 span { color: #e85d04; }
+    .hero-sub { font-size: 17px; color: #94a3b8; margin-bottom: 16px; max-width: 560px; margin-left: auto; margin-right: auto; }
+    .hero-note { font-size: 13px; color: #475569; margin-top: 24px; padding: 12px 20px; background: #1a1d2e; border: 1px solid #2d3250; border-radius: 10px; display: inline-block; }
+
+    /* SECTION */
+    .section { max-width: 860px; margin: 0 auto; padding: 56px 24px; }
+    .section + .section { border-top: 1px solid #1e2235; }
+    .section-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: #e85d04; margin-bottom: 12px; }
+    h2 { font-size: clamp(22px, 3vw, 30px); font-weight: 700; color: #fff; margin-bottom: 16px; }
+    p { color: #94a3b8; margin-bottom: 16px; font-size: 15px; }
+    p:last-child { margin-bottom: 0; }
+
+    /* STEPS */
+    .steps { display: flex; flex-direction: column; gap: 16px; margin-top: 8px; }
+    .step { display: flex; gap: 20px; align-items: flex-start; background: #1a1d2e; border: 1px solid #2d3250; border-radius: 14px; padding: 20px 24px; }
+    .step-num { flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; background: #e85d04; color: #fff; font-weight: 700; font-size: 16px; display: flex; align-items: center; justify-content: center; }
+    .step-body strong { display: block; color: #fff; font-size: 15px; margin-bottom: 4px; }
+    .step-body span { color: #94a3b8; font-size: 14px; }
+
+    /* PERMISSIONS TABLE */
+    .perms { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+    .perm { background: #1a1d2e; border: 1px solid #2d3250; border-radius: 12px; padding: 16px 20px; display: flex; gap: 16px; align-items: flex-start; }
+    .perm-scope { flex-shrink: 0; font-family: monospace; font-size: 13px; background: #111320; border: 1px solid #2d3250; color: #e85d04; padding: 4px 10px; border-radius: 6px; white-space: nowrap; margin-top: 2px; }
+    .perm-desc { font-size: 14px; color: #94a3b8; }
+    .perm-desc strong { display: block; color: #cbd5e1; margin-bottom: 2px; font-size: 14px; }
+
+    /* INFO BOX */
+    .infobox { background: #111a2c; border: 1px solid #1e3a5f; border-radius: 12px; padding: 20px 24px; margin-top: 16px; }
+    .infobox p { color: #7dd3fc; font-size: 14px; margin: 0; }
+    .infobox p + p { margin-top: 10px; }
+
+    /* NOTICE BOX */
+    .noticebox { background: #1a1500; border: 1px solid #3d2e00; border-radius: 12px; padding: 20px 24px; margin-top: 16px; }
+    .noticebox p { color: #fbbf24; font-size: 14px; margin: 0; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid #1e2235; padding: 32px; text-align: center; }
+    .footer-links { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { color: #64748b; text-decoration: none; font-size: 13px; }
+    .footer-links a:hover { color: #94a3b8; }
+    .footer-copy { font-size: 12px; color: #334155; }
+
+    @media (max-width: 600px) {
+      nav { padding: 14px 20px; }
+      .nav-links { gap: 12px; }
+      .step { flex-direction: column; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/clipflowai">
+    <span style="color:#e85d04;">▶</span> ClipFlow AI
+  </a>
+  <div class="nav-links">
+    <a href="#how-it-works">How It Works</a>
+    <a href="#tiktok">TikTok Integration</a>
+    <a href="#privacy">Privacy</a>
+    <a class="nav-cta" href="mailto:michaellu8@gmail.com">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="badge">TikTok Developer App · Content Publishing Workflow</div>
+  <h1>A creator workflow for<br><span>publishing to TikTok</span></h1>
+  <p class="hero-sub">ClipFlow AI helps creators prepare short-form video content and publish it to TikTok through TikTok's authorized APIs. Users review and approve every publishing action.</p>
+  <div class="hero-note">⚠️ This app is currently under review / in internal testing. It is not publicly available on an app store.</div>
+</section>
+
+<!-- OVERVIEW -->
+<div class="section" id="overview">
+  <div class="section-label">Overview</div>
+  <h2>What is ClipFlow AI?</h2>
+  <p>ClipFlow AI is a local content generation and upload pipeline for short-form social media videos. It provides a structured workflow for preparing video content and submitting it to TikTok using TikTok's official Content Posting API.</p>
+  <p>The app is designed so that a user connects their TikTok account, prepares or selects a short-form video, reviews the content and posting details, and then explicitly approves the final publishing action.</p>
+  <div class="noticebox">
+    <p>⛔ ClipFlow AI does not post content to a TikTok account without the user's explicit authorization. No automatic or background posting occurs.</p>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="section" id="how-it-works">
+  <div class="section-label">How It Works</div>
+  <h2>Step-by-step publishing flow</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <strong>Open ClipFlow AI</strong>
+        <span>The user launches the application on their device.</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <strong>Connect TikTok account via Login Kit</strong>
+        <span>The user authenticates through TikTok's official Login Kit. ClipFlow AI never handles TikTok passwords.</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <strong>Prepare or select video content</strong>
+        <span>The user selects or prepares a short-form video file and adds captions or metadata.</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <strong>Review video and posting details</strong>
+        <span>The user reviews the video, caption, and posting settings before anything is submitted.</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <strong>Approve the publishing action</strong>
+        <span>The user explicitly confirms they want to publish. This is a required user action — the app does not skip this step.</span>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">6</div>
+      <div class="step-body">
+        <strong>Video submitted to TikTok</strong>
+        <span>ClipFlow AI submits the approved video to TikTok via the authorized Content Posting API (Direct Post).</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TIKTOK INTEGRATION -->
+<div class="section" id="tiktok">
+  <div class="section-label">TikTok Integration</div>
+  <h2>How TikTok APIs are used</h2>
+  <p>ClipFlow AI integrates with TikTok using TikTok's official developer APIs. All TikTok interactions occur through authorized, documented API endpoints.</p>
+
+  <div class="infobox">
+    <p><strong style="color:#fff;">Login Kit</strong> — Used to authenticate the user's TikTok account securely. ClipFlow AI does not store TikTok passwords. Tokens are stored locally on the user's device and used only to make authorized API calls.</p>
+    <p><strong style="color:#fff;">Content Posting API (Direct Post)</strong> — Used only after the user has reviewed their content and explicitly approved publishing. The app calls this API once per user-initiated action. No background or scheduled posting is performed.</p>
+  </div>
+
+  <h2 style="margin-top: 40px;">Requested permissions</h2>
+  <div class="perms">
+    <div class="perm">
+      <div class="perm-scope">user.info.basic</div>
+      <div class="perm-desc">
+        <strong>Basic profile information</strong>
+        Used to identify the connected TikTok account and display the user's profile name in the app. No profile data is stored on external servers.
+      </div>
+    </div>
+    <div class="perm">
+      <div class="perm-scope">video.publish</div>
+      <div class="perm-desc">
+        <strong>Publish video to TikTok</strong>
+        Used to submit approved video content to the user's TikTok account via the Content Posting API. Only called after explicit user approval.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRIVACY -->
+<div class="section" id="privacy">
+  <div class="section-label">Privacy &amp; Data</div>
+  <h2>What data ClipFlow AI collects</h2>
+  <p>ClipFlow AI only collects the minimum information needed to operate the TikTok publishing workflow:</p>
+  <ul style="color:#94a3b8; font-size:15px; padding-left:20px; display:flex; flex-direction:column; gap:8px; margin-top:8px;">
+    <li>Basic TikTok account information (username, display name) — used in-app only to confirm the connected account</li>
+    <li>TikTok OAuth tokens — stored locally on the user's device, used only to make authorized API calls</li>
+    <li>Video files and captions provided by the user — processed locally and submitted to TikTok on user approval</li>
+    <li>Basic operational logs for error tracking and troubleshooting</li>
+  </ul>
+
+  <div class="infobox" style="margin-top:24px;">
+    <p>ClipFlow AI does not sell user data. User data is not shared with third parties except as required to operate the TikTok API integration (i.e., submitting content to TikTok on the user's behalf).</p>
+  </div>
+
+  <h2 style="margin-top: 40px;">User control</h2>
+  <p>Users remain in full control of publishing. The app cannot and does not publish content without the user first reviewing and approving the action. Users can disconnect their TikTok account at any time.</p>
+  <p>To request deletion of any data associated with your use of ClipFlow AI, see the <a href="/clipflowai/data-deletion" style="color:#e85d04;">Data Deletion</a> page.</p>
+</div>
+
+<!-- SUPPORT -->
+<div class="section" id="support">
+  <div class="section-label">Support</div>
+  <h2>Contact</h2>
+  <p>For support, questions, or TikTok review inquiries, contact:</p>
+  <p><a href="mailto:michaellu8@gmail.com" style="color:#e85d04; font-weight:600;">michaellu8@gmail.com</a></p>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="/clipflowai">Home</a>
+    <a href="/clipflowai/privacy">Privacy Policy</a>
+    <a href="/clipflowai/terms">Terms of Service</a>
+    <a href="/clipflowai/data-deletion">Data Deletion</a>
+    <a href="mailto:michaellu8@gmail.com">Support</a>
+  </div>
+  <div class="footer-copy">© 2026 EBM Apps · ClipFlow AI</div>
+</footer>
+
+</body>
+</html>
