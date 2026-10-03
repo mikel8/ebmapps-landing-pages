@@ -8,6 +8,26 @@
   <style>
     *{box-sizing:border-box}body{margin:0;background:#0f172a;color:#e2e8f0;font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}nav,main,footer{max-width:1000px;margin:auto;padding:20px 24px}nav{display:flex;justify-content:space-between;border-bottom:1px solid #1e293b}.logo{color:#fff;font-weight:800;text-decoration:none}.logo span{color:#22c55e}nav a,footer a{color:#94a3b8;text-decoration:none}.hero{text-align:center;padding:80px 24px 42px;max-width:800px;margin:auto}.badge{color:#22c55e;font-size:12px;text-transform:uppercase;letter-spacing:.12em}.hero h1{font-size:clamp(38px,7vw,64px);line-height:1.08;color:#fff;margin:14px 0}.hero p{color:#b4c0d4;font-size:20px;margin:0 auto;max-width:700px}.cta{display:inline-block;background:#22c55e;color:#04110a;padding:13px 24px;border-radius:10px;font-weight:800;text-decoration:none;margin:22px 0 8px}.note{font-size:13px;color:#8b9ab2}.visual{display:block;width:100%;border:1px solid #304267;border-radius:18px;background:#111b3c;margin:0 auto 22px}.section{border-top:1px solid #1e293b;padding:48px 0}.proof{display:grid;grid-template-columns:1fr 1.1fr;gap:28px;align-items:center}.proof h2,.section h2{font-size:clamp(27px,4vw,38px);line-height:1.15;color:#fff;margin:0 0 14px}.proof p,.muted{color:#a7b5cc}.proof-image{width:100%;border-radius:14px;border:1px solid #41516d;background:#fff;box-shadow:0 18px 45px #02061766}.facts{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0}.facts span{font-size:14px;padding:5px 10px;border-radius:999px;background:#1e3a4b;color:#bae6fd;font-weight:700}.flow{font-weight:700;color:#dbeafe}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}.card{background:#1e293b;border:1px solid #334155;border-radius:16px;padding:22px}.card h3{color:#fff;margin-top:0}ol{padding-left:24px}footer{border-top:1px solid #1e293b;color:#64748b;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}@media(max-width:720px){nav,main,footer{padding-left:18px;padding-right:18px}.hero{padding:56px 18px 30px}.hero p{font-size:18px}.proof{grid-template-columns:1fr}.proof-copy{order:1}.proof-visual{order:2}.section{padding:36px 0}.visual{border-radius:12px}.cta{display:block;text-align:center}.facts span{font-size:13px}}
   </style>
+  <script>
+    (() => {
+      const host = 'https://us.i.posthog.com';
+      const projectToken = 'phc_qehuetKPrvabKezGmQSNJQXD8NGv2htMWq5sqix6JSDp';
+      const identityKey = 'blogtobook_landing_installation_id';
+      const base = { app_name: 'BlogToBook', app_version: '0.1.0', surface: 'landing_page' };
+      let distinctId;
+      try {
+        distinctId = localStorage.getItem(identityKey);
+        if (!distinctId) {
+          distinctId = crypto.randomUUID();
+          localStorage.setItem(identityKey, distinctId);
+        }
+      } catch { distinctId = crypto.randomUUID(); }
+      window.BlogToBookAnalytics = (event, properties = {}) => {
+        const body = JSON.stringify({ api_key: projectToken, event, properties: { distinct_id: distinctId, ...base, ...properties } });
+        try { fetch(`${host}/i/v0/e/`, { method: 'POST', headers: { 'content-type': 'application/json' }, body, keepalive: true }).catch(() => {}); } catch {}
+      };
+    })();
+  </script>
 </head>
 <body>
   <nav><a class="logo" href="/">EBM <span>Apps</span></a><a href="/privacy">Privacy</a></nav>
@@ -15,8 +35,9 @@
     <div class="badge">BlogToBook · macOS Apple Silicon</div>
     <h1>Turn a blog archive into a book.</h1>
     <p>Bring the public blog or newsletter archive you already want to read. Get one chronological EPUB for calm, offline reading.</p>
-    <a class="cta" href="/downloads/BlogToBook-v0.1.0-macOS-arm64.zip">Download for Mac — Free Early Access</a>
-    <div class="note">Apple Silicon Mac · No account required · Free during early access</div>
+    <a class="cta" id="download" href="/downloads/BlogToBook-v0.1.0-macOS-arm64.zip">Download Free During Early Access</a>
+    <div class="note">Apple Silicon Mac · No account required · Apple-notarized release · Free during early access</div>
+    <div class="note">$9 lifetime introductory price planned for public release.</div>
   </header>
   <main>
     <img class="visual" src="transformation.jpg" alt="Scattered blog and newsletter posts flow through BlogToBook into one chronological EPUB, ready for an e-reader.">
@@ -34,5 +55,9 @@
     <section class="section"><h2>Early access, honestly scoped</h2><p class="muted">Designed for public blog, newsletter, and archive URLs—not generic creator homepages. Archive completeness depends on what a source exposes publicly; some sites may restrict automated access or be only partially discoverable. Compatibility will continue improving.</p></section>
   </main>
   <footer><span>BlogToBook v0.1.0 · Free early access</span><a href="/privacy">Privacy Policy</a></footer>
+  <script>
+    BlogToBookAnalytics('landing_page_viewed');
+    document.getElementById('download').addEventListener('click', () => BlogToBookAnalytics('download_clicked', { platform: 'macOS', architecture: 'arm64', offer: 'free_early_access' }));
+  </script>
 </body>
 </html>
