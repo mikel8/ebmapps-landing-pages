@@ -24,7 +24,7 @@
       } catch { distinctId = crypto.randomUUID(); }
       window.BlogToBookAnalytics = (event, properties = {}) => {
         const body = JSON.stringify({ api_key: projectToken, event, properties: { distinct_id: distinctId, ...base, ...properties } });
-        try { fetch(`${host}/i/v0/e/`, { method: 'POST', headers: { 'content-type': 'application/json' }, body, keepalive: true }).catch(() => {}); } catch {}
+        try { fetch(`${host}/i/v0/e/`, { method: 'POST', headers: { 'content-type': 'application/json' }, body, keepalive: true, referrerPolicy: 'no-referrer' }).catch(() => {}); } catch {}
       };
     })();
   </script>
