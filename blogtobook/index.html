@@ -32,33 +32,33 @@
 <body>
   <nav><a class="logo" href="/">EBM <span>Apps</span></a><a href="/privacy">Privacy</a></nav>
   <header class="hero">
-    <div class="badge">BlogToBook · macOS Apple Silicon</div>
-    <h1>Turn a blog archive into a book.</h1>
-    <p>Bring the public blog or newsletter archive you already want to read. Get one chronological EPUB for calm, offline reading.</p>
+    <div class="badge">BlogToBook · Web + Mac</div>
+    <h1>Turn a blog or newsletter archive into a book.</h1>
+    <p>Paste a public archive URL. BlogToBook collects the posts, lets you review the collection, then builds an EPUB for your e-reader.</p>
     <a class="cta" id="web" href="https://blogtobook.fly.dev/">Try BlogToBook on the Web</a>
-    <p>No download required.</p>
+    <p>No download. No account. Free during early access.</p>
     <a class="cta" id="download" href="/downloads/BlogToBook-v0.1.0-macOS-arm64.zip">Download for Mac — Free During Early Access</a>
-    <div class="note">Apple Silicon Mac · No account required · Apple-notarized release · Free during early access</div>
-    <div class="note">$9 lifetime introductory price planned for public release.</div>
+    <div class="note">Apple Silicon Mac · self-contained, notarized release · free during early access</div>
   </header>
   <main>
     <img class="visual" src="transformation.jpg" alt="Scattered blog and newsletter posts flow through BlogToBook into one chronological EPUB, ready for an e-reader.">
     <section class="section proof">
       <div class="proof-copy">
-        <h2>From 56 scattered posts to one book</h2>
-        <p>A completed Brian Balfour archive run in the current macOS app: collected, reviewed, and exported as an offline EPUB.</p>
+        <h2>From public archive to EPUB</h2>
+        <p>BlogToBook is built for the archives you already want to read: collect the public posts, check the selection, then take one book with you.</p>
         <div class="facts"><span>56 articles</span><span>105,895 words</span><span>56 chapters</span><span>Offline EPUB</span></div>
-        <p class="flow">Archive → Inspect &amp; collect → Review → EPUB → Read on your e-reader</p>
+        <p class="flow">Paste archive → Inspect → Collect → Review → EPUB</p>
       </div>
       <div class="proof-visual"><img class="proof-image" src="review-completed.png" alt="Completed BlogToBook Review screen showing 56 collected articles and an EPUB ready to download."></div>
     </section>
     <section class="section"><h2>From archive to e-reader</h2><ol><li>Paste the public blog or archive URL you already want to read.</li><li>BlogToBook inspects and collects the public articles.</li><li>Review titles, dates, previews, and selection.</li><li>Export one chronological EPUB for Apple Books, Kindle, or another reader.</li></ol></section>
-    <section class="section grid"><div class="card"><h3>Chronological collection</h3><p class="muted">Follow public archive structures and preserve reading order.</p></div><div class="card"><h3>Review before export</h3><p class="muted">Inspect titles, dates, previews, and selection before making the book.</p></div><div class="card"><h3>Offline reading</h3><p class="muted">Package safely available images into a local EPUB.</p></div><div class="card"><h3>Local processing</h3><p class="muted">Article and image caches and generated books stay on your Mac.</p></div></section>
+    <section class="section grid"><div class="card"><h3>Chronological collection</h3><p class="muted">Follow public archive structures and preserve reading order.</p></div><div class="card"><h3>Review before export</h3><p class="muted">Inspect titles, dates, previews, and selection before making the book.</p></div><div class="card"><h3>Offline reading</h3><p class="muted">Package safely available images into a local EPUB.</p></div><div class="card"><h3>Web or Mac</h3><p class="muted">Try the hosted beta instantly, or keep a self-contained app on your Apple Silicon Mac.</p></div></section>
     <section class="section"><h2>Early access, honestly scoped</h2><p class="muted">Designed for public blog, newsletter, and archive URLs—not generic creator homepages. Archive completeness depends on what a source exposes publicly; some sites may restrict automated access or be only partially discoverable. Compatibility will continue improving.</p></section>
   </main>
   <footer><span>BlogToBook v0.1.0 · Free early access</span><a href="/privacy">Privacy Policy</a></footer>
   <script>
     BlogToBookAnalytics('landing_page_viewed');
+    document.getElementById('web').addEventListener('click', () => BlogToBookAnalytics('web_try_clicked', { destination: 'hosted_web' }));
     document.getElementById('download').addEventListener('click', () => BlogToBookAnalytics('download_clicked', { platform: 'macOS', architecture: 'arm64', offer: 'free_early_access' }));
   </script>
 </body>
