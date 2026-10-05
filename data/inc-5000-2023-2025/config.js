@@ -2,5 +2,5 @@
 window.EASTBRIGHT_HISTORICAL_INC_CONFIG = {
   canonicalUrl: 'https://apps.ebmapps.cc/data/inc-5000-2023-2025/',
   gumroadProductUrl: 'https://eastbrightmarketing.gumroad.com/l/2023-2025',
-  analyticsMeasurementId: ''
+  analyticsMeasurementId: 'AW-18270460893'
 };

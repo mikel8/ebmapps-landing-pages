@@ -2,5 +2,5 @@
 window.EASTBRIGHT_CONFIG = {
   canonicalUrl: 'https://apps.ebmapps.cc/data/inc-5000-2026/',
   gumroadProductUrl: 'https://eastbrightmarketing.gumroad.com/l/2026',
-  analyticsMeasurementId: ''
+  analyticsMeasurementId: 'AW-18270460893'
 };
