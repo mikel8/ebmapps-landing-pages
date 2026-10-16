@@ -50,28 +50,32 @@
     <h2>BlogToBook</h2>
     <p>
       BlogToBook downloads and processes the public blog or newsletter archive
-      you choose locally on your Mac to build the requested book. Article
-      content, HTML, images, generated EPUB contents, article URLs, and the
-      submitted archive URL are not sent to PostHog analytics. Local article and
-      image caches remain on your Mac.
+      you choose to build the requested book. In the Mac app, article and image
+      caches remain on your Mac. In the hosted web app, selected public article
+      content, images, job state, and generated EPUB files are processed and
+      stored on BlogToBook's server as needed to provide the service and its
+      download workflow.
     </p>
     <p>
       BlogToBook uses PostHog for anonymous product analytics such as app
       launch, inspection outcomes, crawl outcomes, review usage, and EPUB export
       outcomes. Events may include aggregate properties such as app version,
       discovery strategy, counts, image counts, artifact size, completeness, and
-      failure categories. An anonymous installation identifier is used; no
-      account is required.
+      failure categories. An anonymous installation or browser identifier is
+      used; no BlogToBook account is required.
     </p>
     <p>
-      Some analytics events leave the Mac so product usage can be measured.
-      BlogToBook does not send scraped article content or archive identity in
-      those events.
+      BlogToBook does not send submitted archive URLs, article URLs, titles,
+      scraped article content, HTML, images, or EPUB contents to PostHog.
+      Stripe processes payments for Founding Access. For purchase recovery,
+      BlogToBook uses the verified email collected by Stripe to send a
+      short-lived, single-use verification code; the service stores a one-way
+      email hash rather than the email address in its entitlement records.
     </p>
     <h2>Contact</h2>
     <p>
-      For privacy questions, contact
-      <a href="mailto:michaellu8@gmail.com">michaellu8@gmail.com</a>.
+      For privacy, support, or refund questions, contact
+      <a href="mailto:support@mail.ebmapps.cc">support@mail.ebmapps.cc</a>.
     </p>
   </body>
 </html>
