@@ -67,7 +67,11 @@
     <section class="section"><h2>Free to try first</h2><p class="muted">Your first complete EPUB export is free. After that, Founding Access is a $19 one-time purchase for additional EPUB exports within the existing hosted processing and usage limits—no subscription, unlimited crawling, or unlimited storage promise.</p><p class="muted">Questions or refund requests: <a href="mailto:support@mail.ebmapps.cc">support@mail.ebmapps.cc</a>.</p><p class="note">Refunds are available within 14 days of purchase, subject to applicable law.</p></section>
   </main>
   <footer><span>BlogToBook</span><a href="/privacy/">Privacy Policy</a></footer>
+  <script src="/blogtobook/funnel-analytics.js"></script>
   <script>
+    btbTelemetry.capture('btb_landing_viewed');
+    document.getElementById('web').href=btbTelemetry.link(document.getElementById('web').href);
+    document.getElementById('web').addEventListener('click',()=>btbTelemetry.capture('btb_web_try_clicked'));
     BlogToBookAnalytics('landing_page_viewed');
     document.getElementById('web').addEventListener('click', () => BlogToBookAnalytics('web_try_clicked', { destination: 'hosted_web' }));
     document.getElementById('download').addEventListener('click', () => BlogToBookAnalytics('download_clicked', { platform: 'macOS', architecture: 'arm64', offer: 'free_early_access' }));
