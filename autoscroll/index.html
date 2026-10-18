@@ -40,9 +40,9 @@
     .hero-note { margin-top: 14px; font-size: 13px; color: #64748b; }
 
     /* DEMO VIDEO */
-    .demo { margin: 48px auto; max-width: 720px; padding: 0 24px; }
-    .demo-frame { background: #1e293b; border: 1px solid #334155; border-radius: 16px; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; color: #475569; font-size: 14px; overflow: hidden; }
-    .demo-frame video { width: 100%; height: 100%; object-fit: cover; border-radius: 16px; }
+    .demo { margin: 24px auto 64px; max-width: 400px; padding: 0 24px; text-align: center; }
+    .demo-frame { background: #0f172a; border: 1px solid #334155; border-radius: 16px; aspect-ratio: 9/16; overflow: hidden; }
+    .demo-frame video { width: 100%; height: 100%; object-fit: contain; border-radius: 16px; }
 
     /* FEATURES */
     .features { max-width: 900px; margin: 64px auto; padding: 0 24px; }
@@ -97,6 +97,17 @@
   <p class="hero-sub">Set your pace, press play, and AutoScroll keeps your page moving — smooth, hands-free, and distraction-free.</p>
   <a class="hero-cta" href="https://chromewebstore.google.com/detail/autoscroll/dadolphlcfbijempflfmbghofiodpcki?utm_source=autoscroll_lp&utm_medium=site&utm_campaign=landing" target="_blank" rel="noopener" onclick="trackInstallClick()">Get AutoScroll Free</a>
   <p class="hero-note">Free up to 1.5× · Pro up to 5× · No account required</p>
+</section>
+
+<section class="demo" aria-labelledby="demo-title">
+  <h2 id="demo-title">See AutoScroll in action</h2>
+  <p>Watch the extension set a pace and scroll a page hands-free.</p>
+  <div class="demo-frame">
+    <video controls preload="metadata" playsinline aria-label="AutoScroll product demo">
+      <source src="autoscroll-product-demo.mp4" type="video/mp4">
+      Your browser does not support video playback.
+    </video>
+  </div>
 </section>
 
 <section class="features">
