@@ -77,7 +77,9 @@
 
     /* APPS GRID */
     .apps { max-width: 1000px; margin: 0 auto 80px; padding: 0 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
-    .app-card { background: #1e293b; border: 1px solid #334155; border-radius: 20px; padding: 32px 28px; display: flex; flex-direction: column; transition: border-color .2s; }
+    .app-card { background: #1e293b; border: 1px solid #334155; border-radius: 20px; padding: 32px 28px; display: flex; flex-direction: column; transition: border-color .2s, transform .2s; color: inherit; text-decoration: none; }
+    .app-card:focus-visible, .featured-card:focus-visible { outline: 3px solid #a78bfa; outline-offset: 4px; }
+    .app-card:hover { transform: translateY(-2px); }
     .app-card:hover { border-color: #475569; }
     .app-card[data-cat="ios"]:hover { border-color: #a855f7; }
     .app-icon { font-size: 40px; margin-bottom: 16px; }
@@ -149,7 +151,7 @@
 
 <!-- FEATURED iOS APP (shown in All + iOS tabs) -->
 <div class="featured-banner" id="featured-lyricshub">
-  <div class="featured-card">
+  <a class="featured-card" href="/lyricshub/" aria-label="Learn more about LyricsHub">
     <div class="featured-badge">New iOS App</div>
     <div class="featured-icon"><img src="/icons/lyricshub.png" alt="LyricsHub icon"></div>
     <div class="featured-body">
@@ -162,13 +164,13 @@
         <span>Save favorites</span>
         <span>Copy &amp; share</span>
       </div>
-      <a class="featured-cta" href="/lyricshub/">
+      <span class="featured-cta">
         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
         Download on the App Store
-      </a>
+      </span>
       <div class="featured-note">Free to download</div>
     </div>
-  </div>
+  </a>
 </div>
 
 <!-- CHROME EXTENSIONS LABEL -->
@@ -176,7 +178,7 @@
 
 <section class="apps" id="apps">
 
-  <div class="app-card" data-cat="extensions">
+  <a class="app-card" data-cat="extensions" href="/autoscroll/" aria-label="Learn more about AutoScroll">
     <div class="app-icon"><img src="/icons/autoscroll.png" alt="AutoScroll icon"></div>
     <div class="app-tag chrome">Chrome</div>
     <div class="app-name">AutoScroll</div>
@@ -187,11 +189,11 @@
       <li>Works on any website</li>
       <li>Speed presets per site (Pro)</li>
     </ul>
-    <a class="app-cta" href="/autoscroll/">Learn More &amp; Install</a>
+    <span class="app-cta">Learn More</span>
     <div class="app-plans">Free · Pro from $1.99/mo</div>
-  </div>
+  </a>
 
-  <div class="app-card" data-cat="extensions">
+  <a class="app-card" data-cat="extensions" href="https://chromewebstore.google.com/detail/video-speeder/glpgemlnkgcploekalkdbamgalojgajk" target="_blank" rel="noopener" aria-label="View VideoSpeeder">
     <div class="app-icon"><img src="/icons/videospeeder.png" alt="VideoSpeeder icon"></div>
     <div class="app-tag chrome">Chrome</div>
     <div class="app-name">VideoSpeeder</div>
@@ -202,11 +204,11 @@
       <li>Works on YouTube, Udemy &amp; more</li>
       <li>Persistent speed settings (Pro)</li>
     </ul>
-    <a class="app-cta" href="https://chromewebstore.google.com/detail/video-speeder/glpgemlnkgcploekalkdbamgalojgajk" target="_blank" rel="noopener">Add to Chrome — Free</a>
+    <span class="app-cta">View App</span>
     <div class="app-plans">Free · Pro from $1.99/mo</div>
-  </div>
+  </a>
 
-  <div class="app-card" data-cat="extensions">
+  <a class="app-card" data-cat="extensions" href="https://chromewebstore.google.com/detail/page-auto-refresher/nfokpjpnhiaflakmjpaedhlelfbelkjj" target="_blank" rel="noopener" aria-label="View Page Auto-Refresher">
     <div class="app-icon"><img src="/icons/autorefresher.png" alt="Page Auto-Refresher icon"></div>
     <div class="app-tag chrome">Chrome</div>
     <div class="app-name">Page Auto-Refresher</div>
@@ -217,22 +219,22 @@
       <li>Multi-tab monitoring (Pro)</li>
       <li>Detached floating controls (Pro)</li>
     </ul>
-    <a class="app-cta" href="https://chromewebstore.google.com/detail/page-auto-refresher/nfokpjpnhiaflakmjpaedhlelfbelkjj" target="_blank" rel="noopener">Add to Chrome — Free</a>
+    <span class="app-cta">View App</span>
     <div class="app-plans">Free · Pro from $1.99/mo</div>
-  </div>
+  </a>
 
 </section>
 
 <section class="apps" style="margin-top:-48px;">
-  <div class="app-card" data-cat="extensions">
+  <a class="app-card" data-cat="extensions" href="/blogtobook/" aria-label="Learn more about BlogToBook">
     <div class="app-icon"><img src="/icons/BlogToBook.png" alt="BlogToBook icon"></div>
     <div class="app-tag ios">Mac App</div>
     <div class="app-name">BlogToBook</div>
     <div class="app-desc">Turn a public blog or newsletter archive into a clean, chronological EPUB for calm offline reading.</div>
     <ul class="app-features"><li>Inspect, review, and select articles</li><li>Local image packaging</li><li>Apple Silicon Mac</li><li>Free early access</li></ul>
-    <a class="app-cta ios" href="/blogtobook/">Learn More &amp; Download</a>
+    <span class="app-cta ios">Learn More</span>
     <div class="app-plans">No account required · Public early access</div>
-  </div>
+  </a>
 </section>
 
 <div class="stats">
