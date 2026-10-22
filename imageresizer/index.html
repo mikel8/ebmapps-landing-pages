@@ -1,17 +1,226 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Image Resizer — Compress Images in Batches</title>
-  <meta name="description" content="Compress multiple images together, compare savings, and download the results as one ZIP with Image Resizer for Chrome.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Resizer – Batch Image Compression for Chrome</title>
+  <!-- Google Ads Conversion Tracking — replace YYYYYYYYYYYY with your conversion label -->
+  <!-- Get label from: Google Ads → Goals → Conversions → your new action → Tag details -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18270460893"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18270460893');
+    function trackInstallClick() {
+      gtag('event', 'conversion', { 'send_to': 'AW-18270460893/z7YRCM36oMUcEN23hIhE', 'value': 1.0, 'currency': 'USD' });
+    }
+  </script>
+  <meta name="description" content="Image Resizer compresses and resizes batches of images locally in Chrome. Process 3 images free, then unlock batches of up to 100 for $1.99/month.">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://apps.ebmapps.cc/imageresizer/">
   <style>
-    :root{font-family:Inter,system-ui,-apple-system,sans-serif;color:#17202a;background:#fff8f2}*{box-sizing:border-box}body{margin:0}main{max-width:1050px;margin:auto;padding:72px 24px}header{display:flex;justify-content:space-between;align-items:center;gap:20px}a{color:#d94f00}nav a{margin-left:18px;text-decoration:none;font-weight:600}.eyebrow{color:#d94f00;font-weight:800;letter-spacing:.08em;text-transform:uppercase}h1{font-size:clamp(42px,7vw,76px);line-height:.98;max-width:760px;margin:18px 0}p{font-size:19px;line-height:1.55;max-width:680px}.button{display:inline-block;background:#d94f00;color:white;padding:14px 20px;border-radius:10px;text-decoration:none;font-weight:800;margin:12px 12px 28px 0}.button.alt{background:#fff;color:#d94f00;border:1px solid #d94f00}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:40px 0}.card{background:white;border:1px solid #f0d9c8;border-radius:16px;padding:22px}.card h2{margin-top:0;font-size:21px}.limits{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px}.limit{background:#fff;border-radius:16px;padding:24px;border:1px solid #f0d9c8}.limit.pro{border-color:#d94f00}.limit strong{font-size:25px}.small{font-size:14px;color:#5d6870}@media(max-width:700px){.grid,.limits{grid-template-columns:1fr}header{align-items:flex-start;flex-direction:column}nav a{margin:0 14px 0 0}}
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f172a; color: #e2e8f0; line-height: 1.6; }
+
+    /* NAV */
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 32px; border-bottom: 1px solid #1e293b; }
+    .nav-logo { font-weight: 700; font-size: 18px; color: #fff; text-decoration: none; }
+    .nav-cta { background: #2563eb; color: #fff; font-weight: 600; font-size: 14px; padding: 8px 20px; border-radius: 8px; text-decoration: none; transition: background .2s; }
+    .nav-cta:hover { background: #1d4ed8; }
+
+    /* HERO */
+    .hero { text-align: center; padding: 80px 24px 60px; max-width: 680px; margin: 0 auto; }
+    .badge { display: inline-block; background: #1e293b; border: 1px solid #334155; color: #94a3b8; font-size: 13px; padding: 4px 14px; border-radius: 100px; margin-bottom: 24px; }
+    h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.15; color: #fff; margin-bottom: 20px; }
+    h1 span { color: #38bdf8; }
+    .hero-sub { font-size: 18px; color: #94a3b8; margin-bottom: 36px; max-width: 500px; margin-left: auto; margin-right: auto; }
+    .hero-cta { display: inline-block; background: #2563eb; color: #fff; font-weight: 700; font-size: 17px; padding: 16px 36px; border-radius: 12px; text-decoration: none; transition: background .2s, transform .1s; }
+    .hero-cta:hover { background: #1d4ed8; transform: translateY(-1px); }
+    .hero-note { margin-top: 14px; font-size: 13px; color: #64748b; }
+
+    /* DEMO VIDEO */
+    .demo { margin: 24px auto 64px; max-width: 800px; padding: 0 24px; text-align: center; }
+    .demo-frame { background: #0f172a; border: 1px solid #334155; border-radius: 16px; aspect-ratio: 16/9; overflow: hidden; }
+    .demo-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+    /* FEATURES */
+    .features { max-width: 900px; margin: 64px auto; padding: 0 24px; }
+    .features-heading { text-align: center; font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 48px; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+    .feature-card { background: #1e293b; border: 1px solid #334155; border-radius: 16px; padding: 28px 24px; }
+    .feature-icon { font-size: 28px; margin-bottom: 12px; }
+    .feature-title { font-weight: 600; font-size: 16px; color: #fff; margin-bottom: 8px; }
+    .feature-desc { font-size: 14px; color: #94a3b8; }
+
+    /* SOCIAL PROOF */
+    .proof { background: #1e293b; border-top: 1px solid #334155; border-bottom: 1px solid #334155; padding: 48px 24px; text-align: center; margin: 64px 0; }
+    .proof-stats { display: flex; justify-content: center; gap: 64px; flex-wrap: wrap; }
+    .stat-num { font-size: 36px; font-weight: 800; color: #38bdf8; }
+    .stat-label { font-size: 13px; color: #64748b; margin-top: 4px; }
+
+    /* PLANS */
+    .plans { max-width: 800px; margin: 0 auto 80px; padding: 0 24px; text-align: center; }
+    .plans-heading { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .plans-sub { color: #94a3b8; margin-bottom: 40px; }
+    .plans-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 540px) { .plans-grid { grid-template-columns: 1fr; } }
+    .plan-card { background: #1e293b; border: 1px solid #334155; border-radius: 16px; padding: 28px 24px; text-align: left; }
+    .plan-card.featured { border-color: #2563eb; }
+    .plan-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: #38bdf8; margin-bottom: 8px; }
+    .plan-name { font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .plan-price { font-size: 15px; color: #94a3b8; margin-bottom: 20px; }
+    .plan-features { list-style: none; font-size: 14px; color: #94a3b8; display: flex; flex-direction: column; gap: 8px; }
+    .plan-features li::before { content: "✓  "; color: #38bdf8; font-weight: 700; }
+
+    /* CTA FOOTER */
+    .cta-footer { text-align: center; padding: 64px 24px 80px; }
+    .cta-footer h2 { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+    .cta-footer p { color: #94a3b8; margin-bottom: 32px; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid #1e293b; padding: 24px 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 13px; color: #475569; }
+    footer a { color: #475569; text-decoration: none; }
+    footer a:hover { color: #94a3b8; }
   </style>
-</head>
-<body><main>
-  <header><strong>Image Resizer</strong><nav><a href="https://chromewebstore.google.com/detail/pjfbjgmjonkfdjkgplflnaeojcjeoimn">Install from Chrome Web Store</a></nav></header>
-  <section><div class="eyebrow">Version 5.6.0</div><h1>Compress a whole batch in one go.</h1><p>Select multiple images, apply one shared format and quality setting, then see exactly how much space you saved. Download individual results or everything together as a ZIP.</p><a class="button" href="https://chromewebstore.google.com/detail/pjfbjgmjonkfdjkgplflnaeojcjeoimn">Add to Chrome</a><a class="button alt" href="#plans">See Free and Pro limits</a></section>
-  <section class="grid"><article class="card"><h2>Select once</h2><p>Choose several supported images together or drag them into the extension.</p></article><article class="card"><h2>Compress together</h2><p>Use common settings and track each file’s progress without repeating the workflow.</p></article><article class="card"><h2>Download as ZIP</h2><p>Compare original and compressed sizes, see total savings, and download the complete batch at once.</p></article></section>
-  <section id="plans" class="limits"><article class="limit"><strong>Free</strong><p>Three successfully processed images total across single-image and batch workflows.</p><p class="small">Failed or cancelled images do not consume allowance.</p></article><article class="limit pro"><strong>Pro</strong><p>Batches of up to 100 images, plus existing Pro benefits.</p><p class="small">The Chrome Web Store listing will identify the publicly available release version.</p></article></section>
-  <p class="small">Images are processed locally in your browser. <a href="https://chromewebstore.google.com/detail/pjfbjgmjonkfdjkgplflnaeojcjeoimn">Install Image Resizer</a>.</p>
-</main></body></html>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DGVL18L1LF"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DGVL18L1LF");</script></head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">Image Resizer</a>
+  <a class="nav-cta" href="https://chromewebstore.google.com/detail/image-resizer-extension/pjfbjgmjonkfdjkgplflnaeojcjeoimn" target="_blank" rel="noopener">Add to Chrome — Free</a>
+</nav>
+
+<section class="hero">
+  <div class="badge">Chrome Extension · Free to try</div>
+  <h1>Resize a whole batch<br><span>in one pass</span></h1>
+  <p class="hero-sub">Select your images, choose one shared format and quality setting, and see exactly how much space you save — all processed locally in Chrome.</p>
+  <a class="hero-cta" href="https://chromewebstore.google.com/detail/image-resizer-extension/pjfbjgmjonkfdjkgplflnaeojcjeoimn" target="_blank" rel="noopener">Get Image Resizer Free</a>
+  <p class="hero-note">3 images free · Pro batches up to 100 · $1.99/month</p>
+</section>
+
+<section class="demo" aria-labelledby="demo-title">
+  <h2 id="demo-title">See Image Resizer in action</h2>
+  <p>Watch a batch go from selection to compressed export in seconds.</p>
+  <div class="demo-frame">
+    <iframe src="https://www.youtube.com/embed/uA83ytwHXVw" title="Image Resizer product demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
+</section>
+
+<section class="features">
+  <h2 class="features-heading">Everything you need to process images faster</h2>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🖼️</div>
+      <div class="feature-title">Batch Processing</div>
+      <div class="feature-desc">Select multiple images once and apply the same resize, format, and quality settings to the whole batch.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚙️</div>
+      <div class="feature-title">Shared Settings</div>
+      <div class="feature-desc">Use one clear set of dimensions, format, and quality options instead of repeating the workflow for every file.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📦</div>
+      <div class="feature-title">Export as ZIP</div>
+      <div class="feature-desc">Download individual results or export the complete batch together when the job is finished.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <div class="feature-title">See Your Savings</div>
+      <div class="feature-desc">Compare original and processed sizes so you know what the batch changed before exporting.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <div class="feature-title">Local Processing</div>
+      <div class="feature-desc">Your images are processed in the browser, keeping the workflow quick and private.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">✨</div>
+      <div class="feature-title">Made for Repeat Work</div>
+      <div class="feature-desc">A focused workflow for product images, social assets, uploads, and any folder of images that needs the same treatment.</div>
+    </div>
+  </div>
+</section>
+
+
+<section class="use-cases">
+  <h2 class="features-heading">Built for the image jobs that repeat</h2>
+  <div class="features-grid">
+    <div class="feature-card"><div class="feature-title">🛍️ Store listings</div><div class="feature-desc">Prepare a consistent set of product images without opening a separate editor for every file.</div></div>
+    <div class="feature-card"><div class="feature-title">📱 Social assets</div><div class="feature-desc">Resize and compress a group of images before posting or scheduling them across platforms.</div></div>
+    <div class="feature-card"><div class="feature-title">🌐 Web uploads</div><div class="feature-desc">Shrink large images for websites, forms, and dashboards while keeping control of the output.</div></div>
+  </div>
+</section>
+
+<section class="faq features">
+  <h2 class="features-heading">Questions, answered</h2>
+  <div class="features-grid">
+    <div class="feature-card"><div class="feature-title">What is free?</div><div class="feature-desc">You can process three images for free across single-image and batch workflows.</div></div>
+    <div class="feature-card"><div class="feature-title">When do I need Pro?</div><div class="feature-desc">Pro is $1.99/month and unlocks batches of up to 100 images plus the existing Pro benefits.</div></div>
+  </div>
+</section>
+
+<div class="proof">
+  <div class="proof-stats">
+    <div>
+      <div class="stat-num">3</div>
+      <div class="stat-label">Free images to try</div>
+    </div>
+    <div>
+      <div class="stat-num">100</div>
+      <div class="stat-label">Images per Pro batch</div>
+    </div>
+    <div>
+      <div class="stat-num">$1.99</div>
+      <div class="stat-label">Per month for Pro</div>
+    </div>
+  </div>
+</div>
+
+<section class="plans">
+  <h2 class="plans-heading">Start free, upgrade when the batch gets bigger</h2>
+  <p class="plans-sub">Try the workflow with three images, then unlock larger batches for $1.99/month.</p>
+  <div class="plans-grid">
+    <div class="plan-card">
+      <div class="plan-label">Free</div>
+      <div class="plan-name">Image Resizer Free</div>
+      <div class="plan-price">3 processed images</div>
+      <ul class="plan-features">
+        <li>Single-image and batch workflows</li>
+        <li>Resize and compress locally</li>
+        <li>Compare original and processed sizes</li>
+        <li>No account needed</li>
+      </ul>
+    </div>
+    <div class="plan-card featured">
+      <div class="plan-label">Pro</div>
+      <div class="plan-name">Image Resizer Pro</div>
+      <div class="plan-price">$1.99 / month</div>
+      <ul class="plan-features">
+        <li>Everything in Free</li>
+        <li>Batches of up to 100 images</li>
+        <li>Faster repeat workflows</li>
+        <li>Priority support</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="cta-footer">
+  <h2>Ready to resize the next batch?</h2>
+  <p>Try Image Resizer free, then upgrade when you need larger batches.</p>
+  <a class="hero-cta" href="https://chromewebstore.google.com/detail/image-resizer-extension/pjfbjgmjonkfdjkgplflnaeojcjeoimn" target="_blank" rel="noopener">Get Image Resizer Free</a>
+</div>
+
+<footer>
+  <span>© 2026 EBM Apps</span>
+  <div style="display:flex;gap:24px;">
+    <a href="https://apps.ebmapps.cc/">EBM Apps</a>
+    <a href="https://apps.ebmapps.cc/privacy/">Privacy Policy</a>
+    <a href="mailto:support@ebmapps.cc">Support</a>
+  </div>
+</footer>
+
+</body>
+</html>
