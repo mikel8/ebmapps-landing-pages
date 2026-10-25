@@ -3,201 +3,216 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lyrics Finder – Find Songs From One Lyric</title>
-  <meta name="description" content="Type any lyric fragment you remember — even if it's not exact — and Lyrics Finder identifies the song in seconds. Free on the App Store.">
+  <meta name="theme-color" content="#0d0d1a">
+  <title>LyricsHub — Love a song? Learn to sing it.</title>
+  <meta name="description" content="Find a song by searching or identifying music. Open available lyrics, practice with scrolling lyrics, and save songs for later with LyricsHub for iPhone.">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://apps.ebmapps.cc/lyricshub/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="LyricsHub — Love a song? Learn to sing it.">
+  <meta property="og:description" content="Search or identify a song, open its available lyrics, practice, and save it for later.">
+  <meta property="og:url" content="https://apps.ebmapps.cc/lyricshub/">
+  <meta property="og:image" content="https://apps.ebmapps.cc/lyricshub/assets/song-search-results.jpg">
+  <link rel="icon" href="../icons/lyricshub.png" type="image/png">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0d0d1a; color: #e2e8f0; line-height: 1.6; }
-
-    /* NAV */
-    nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 32px; border-bottom: 1px solid #1e1b3a; }
-    .nav-logo { font-weight: 700; font-size: 18px; color: #fff; text-decoration: none; }
-    .nav-cta { background: #a855f7; color: #fff; font-weight: 600; font-size: 14px; padding: 8px 20px; border-radius: 8px; text-decoration: none; transition: background .2s; }
-    .nav-cta:hover { background: #9333ea; }
-
-    /* HERO */
-    .hero { text-align: center; padding: 80px 24px 60px; max-width: 680px; margin: 0 auto; }
-    .badge { display: inline-block; background: #1e1b3a; border: 1px solid #3b3270; color: #a78bfa; font-size: 13px; padding: 4px 14px; border-radius: 100px; margin-bottom: 24px; }
-    h1 { font-size: clamp(32px, 5vw, 52px); font-weight: 800; line-height: 1.15; color: #fff; margin-bottom: 20px; }
-    h1 span { color: #a855f7; }
-    .hero-sub { font-size: 18px; color: #94a3b8; margin-bottom: 36px; max-width: 520px; margin-left: auto; margin-right: auto; }
-    .hero-cta { display: inline-flex; align-items: center; gap: 10px; background: #a855f7; color: #fff; font-weight: 700; font-size: 17px; padding: 16px 36px; border-radius: 12px; text-decoration: none; transition: background .2s, transform .1s; }
-    .hero-cta:hover { background: #9333ea; transform: translateY(-1px); }
-    .hero-cta svg { width: 22px; height: 22px; fill: currentColor; flex-shrink: 0; }
-    .hero-note { margin-top: 14px; font-size: 13px; color: #64748b; }
-    .store-badges { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
-    .store-badge { display: inline-flex; align-items: center; gap: 10px; min-width: 176px; padding: 9px 16px; border-radius: 9px; background: #050505; color: #fff; text-decoration: none; text-align: left; border: 1px solid #3b3270; transition: transform .15s, border-color .2s; }
-    .store-badge:hover { transform: translateY(-1px); border-color: #a855f7; }
-    .store-badge small { display: block; font-size: 10px; line-height: 1.1; letter-spacing: .02em; }
-    .store-badge strong { display: block; font-size: 17px; line-height: 1.2; font-weight: 600; }
-    .store-icon { font-size: 27px; line-height: 1; }
-
-    /* DEMO VIDEO */
-    .demo { margin: 48px auto; max-width: 340px; padding: 0 24px; }
-    .demo-frame { background: #1e1b3a; border: 1px solid #3b3270; border-radius: 28px; overflow: hidden; aspect-ratio: 9/19.5; box-shadow: 0 24px 64px rgba(168,85,247,.18); }
-    .demo-frame video { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-    /* HOW IT WORKS */
-    .how { max-width: 800px; margin: 64px auto 0; padding: 0 24px; text-align: center; }
-    .how-heading { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 12px; }
-    .how-sub { color: #94a3b8; margin-bottom: 48px; }
-    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; }
-    .step { display: flex; flex-direction: column; align-items: center; gap: 12px; }
-    .step-num { width: 44px; height: 44px; border-radius: 50%; background: #a855f7; color: #fff; font-weight: 700; font-size: 18px; display: flex; align-items: center; justify-content: center; }
-    .step-title { font-weight: 600; color: #fff; }
-    .step-desc { font-size: 14px; color: #94a3b8; text-align: center; }
-
-    /* FEATURES */
-    .features { max-width: 900px; margin: 80px auto; padding: 0 24px; }
-    .features-heading { text-align: center; font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 48px; }
-    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
-    .feature-card { background: #1e1b3a; border: 1px solid #3b3270; border-radius: 16px; padding: 28px 24px; }
-    .feature-card.highlight { border-color: #a855f7; background: #1a1030; }
-    .feature-icon { font-size: 28px; margin-bottom: 12px; }
-    .feature-title { font-weight: 600; font-size: 16px; color: #fff; margin-bottom: 8px; }
-    .feature-desc { font-size: 14px; color: #94a3b8; }
-
-    /* SOCIAL PROOF */
-    .proof { background: #1e1b3a; border-top: 1px solid #3b3270; border-bottom: 1px solid #3b3270; padding: 48px 24px; text-align: center; margin: 0 0 64px; }
-    .proof-stats { display: flex; justify-content: center; gap: 64px; flex-wrap: wrap; }
-    .stat-num { font-size: 36px; font-weight: 800; color: #a855f7; }
-    .stat-label { font-size: 13px; color: #64748b; margin-top: 4px; }
-
-    /* CTA FOOTER */
-    .cta-footer { text-align: center; padding: 64px 24px 80px; }
-    .cta-footer h2 { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 12px; }
-    .cta-footer p { color: #94a3b8; margin-bottom: 32px; }
-
-    /* FOOTER */
-    footer { border-top: 1px solid #1e1b3a; padding: 24px 32px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 13px; color: #475569; }
-    footer a { color: #475569; text-decoration: none; }
-    footer a:hover { color: #94a3b8; }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0d0d1a; color: #e8e9f4; line-height: 1.6; }
+    a { color: inherit; }
+    .skip-link { position: absolute; top: -60px; left: 12px; z-index: 5; background: #fff; color: #171329; padding: 10px 14px; border-radius: 8px; }
+    .skip-link:focus { top: 12px; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+    .site-header { border-bottom: 1px solid #24213e; }
+    .nav { min-height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; font-size: 18px; font-weight: 750; letter-spacing: -.02em; }
+    .brand img { width: 38px; height: 38px; border-radius: 10px; }
+    .nav-cta, .button { display: inline-flex; align-items: center; justify-content: center; border-radius: 12px; background: #a855f7; color: #fff; text-decoration: none; font-weight: 750; transition: background .18s, transform .18s; }
+    .nav-cta { padding: 10px 18px; font-size: 14px; }
+    .button { min-height: 54px; padding: 13px 22px; font-size: 16px; gap: 9px; }
+    .nav-cta:hover, .button:hover { background: #9333ea; transform: translateY(-1px); }
+    .button.secondary { background: transparent; border: 1px solid #5a527e; color: #f5f2ff; }
+    .button.secondary:hover { background: #1e1b3a; }
+    .hero { padding: clamp(42px, 8vw, 88px) 0 62px; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, .95fr) minmax(280px, .8fr); align-items: center; gap: clamp(32px, 7vw, 88px); }
+    .eyebrow { margin: 0 0 14px; color: #c4a6ff; font-size: 12px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+    h1 { max-width: 12ch; margin: 0; color: #fff; font-size: clamp(42px, 6vw, 68px); line-height: 1.04; letter-spacing: -.052em; }
+    .hero-copy { max-width: 560px; margin: 20px 0 24px; color: #b9bbcf; font-size: clamp(17px, 2vw, 20px); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero-note { margin: 14px 0 0; color: #888aa3; font-size: 13px; }
+    .screen-card { width: min(100%, 350px); justify-self: center; overflow: hidden; border: 1px solid #393355; border-radius: 26px; background: #11101d; box-shadow: 0 30px 90px rgba(0,0,0,.45), 0 0 50px rgba(168,85,247,.12); }
+    .screen-card img { display: block; width: 100%; height: auto; }
+    .screen-caption { margin: 0; padding: 11px 14px; color: #aaa8c0; text-align: center; font-size: 12px; }
+    .demo-section { padding: 62px 0 72px; background: #141326; border-top: 1px solid #24213e; border-bottom: 1px solid #24213e; }
+    .section-heading { max-width: 720px; margin: 0 auto 32px; text-align: center; }
+    .section-heading h2 { margin: 0 0 10px; color: #fff; font-size: clamp(28px, 4vw, 40px); line-height: 1.15; letter-spacing: -.035em; }
+    .section-heading p { margin: 0; color: #a6a6be; }
+    .demo-layout { display: grid; grid-template-columns: minmax(260px, 330px) minmax(0, 1fr); gap: clamp(28px, 7vw, 80px); align-items: center; justify-content: center; max-width: 900px; margin: auto; }
+    .video-frame { overflow: hidden; border: 1px solid #393355; border-radius: 26px; background: #090812; box-shadow: 0 24px 64px rgba(0,0,0,.35); }
+    .video-frame video { display: block; width: 100%; height: auto; aspect-ratio: 828 / 1792; object-fit: contain; background: #090812; }
+    .demo-copy h3 { margin: 0 0 12px; color: #fff; font-size: 24px; line-height: 1.2; }
+    .demo-copy p { color: #aaa9bf; }
+    .demo-facts { margin: 18px 0 0; padding-left: 20px; color: #c7c3dc; }
+    .demo-facts li { margin: 7px 0; }
+    .journey { padding: 76px 0; }
+    .journey-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 34px; }
+    .journey-card { padding: 22px 20px; border: 1px solid #302b4b; border-radius: 16px; background: #151426; }
+    .step { color: #c4a6ff; font-size: 12px; font-weight: 800; letter-spacing: .14em; }
+    .journey-card h3 { margin: 10px 0 7px; color: #fff; font-size: 18px; line-height: 1.25; }
+    .journey-card p { margin: 0; color: #a8a8bf; font-size: 14px; }
+    .features { padding: 0 0 76px; }
+    .feature-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 28px; }
+    .feature { padding: 21px; border-radius: 15px; background: #1a1730; }
+    .feature h3 { margin: 0 0 7px; color: #fff; font-size: 17px; }
+    .feature p { margin: 0; color: #aaa9bf; font-size: 14px; }
+    .final-cta { padding: 56px 20px; border-block: 1px solid #2a2545; background: #151326; text-align: center; }
+    .final-cta h2 { margin: 0 0 8px; color: #fff; font-size: clamp(28px, 4vw, 38px); letter-spacing: -.03em; }
+    .final-cta p { margin: 0 0 22px; color: #aaa9bf; }
+    footer { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; padding: 24px 0; color: #77778d; font-size: 13px; }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    footer a { color: #a4a1b7; text-decoration: none; }
+    footer a:hover { color: #fff; }
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 32px, 560px); }
+      .nav { min-height: 64px; }
+      .brand { font-size: 16px; }
+      .nav-cta { padding: 9px 12px; font-size: 12px; }
+      .hero { padding: 42px 0 50px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 30px; }
+      h1 { max-width: 11ch; font-size: clamp(42px, 12vw, 58px); }
+      .hero-copy { margin: 16px 0 21px; }
+      .hero-actions { display: grid; grid-template-columns: 1fr; }
+      .screen-card { width: min(100%, 320px); }
+      .demo-section { padding: 48px 0 54px; }
+      .demo-layout { grid-template-columns: minmax(0, 280px); gap: 24px; }
+      .demo-copy { text-align: center; }
+      .demo-facts { display: inline-block; text-align: left; }
+      .journey { padding: 56px 0; }
+      .journey-grid { grid-template-columns: 1fr 1fr; gap: 11px; margin-top: 24px; }
+      .journey-card { padding: 17px 15px; }
+      .journey-card h3 { font-size: 16px; }
+      .journey-card p { font-size: 13px; }
+      .feature-grid { grid-template-columns: 1fr 1fr; gap: 11px; }
+      .feature { padding: 16px 14px; }
+      .feature h3 { font-size: 15px; }
+      .feature p { font-size: 13px; }
+      .features { padding-bottom: 56px; }
+      footer { justify-content: center; text-align: center; }
+      .footer-links { justify-content: center; }
+    }
+    @media (max-width: 390px) {
+      .wrap { width: min(100% - 26px, 560px); }
+      .brand { gap: 7px; font-size: 14px; }
+      .brand img { width: 32px; height: 32px; }
+      .nav-cta { font-size: 11px; }
+      .journey-grid, .feature-grid { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; } }
   </style>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DGVL18L1LF"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DGVL18L1LF");</script></head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DGVL18L1LF"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-DGVL18L1LF");</script>
+</head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <nav class="nav wrap" aria-label="Main navigation">
+    <a class="brand" href="#top"><img src="../icons/lyricshub.png" width="38" height="38" alt=""><span>LyricsHub</span></a>
+    <a class="nav-cta" href="https://apps.apple.com/us/app/lyrics-finder-song-search/id6748971390" target="_blank" rel="noopener">Get LyricsHub</a>
+  </nav>
+</header>
+<main id="main">
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Find it · practice it · keep it</p>
+        <h1>Love a song? Learn to sing it.</h1>
+        <p class="hero-copy">Search by song or artist, or identify music playing around you. Open available lyrics, follow along in Practice Mode, and save songs for later.</p>
+        <div class="hero-actions">
+          <a class="button" href="https://apps.apple.com/us/app/lyrics-finder-song-search/id6748971390" target="_blank" rel="noopener" aria-label="Download LyricsHub on the App Store">Download on the App Store <span aria-hidden="true">↗</span></a>
+          <a class="button secondary" href="#watch-demo">See LyricsHub in action</a>
+        </div>
+        <p class="hero-note">Made for iPhone · App Store ID 6748971390</p>
+      </div>
+      <figure class="screen-card">
+        <img src="assets/song-search-results.jpg" width="828" height="1792" alt="LyricsHub open to a song search with matching results on an iPhone" fetchpriority="high">
+        <figcaption class="screen-caption">Real LyricsHub screen recorded on iPhone</figcaption>
+      </figure>
+    </div>
+  </section>
 
-<nav>
-  <a class="nav-logo" href="#">🎵 Lyrics Finder</a>
-  <a class="nav-cta" href="https://apps.apple.com/us/app/lyrics-finder-song-search/id6748971390" target="_blank" rel="noopener">Find My Song — Free</a>
-</nav>
+  <section class="demo-section" id="watch-demo">
+    <div class="wrap">
+      <div class="section-heading">
+        <p class="eyebrow">A real iPhone demo</p>
+        <h2>From finding a song to Practice Mode</h2>
+        <p>See actual song identification, search, lyrics, Practice Mode, and the practice queue.</p>
+      </div>
+      <div class="demo-layout">
+        <div class="video-frame">
+          <video controls playsinline preload="none" poster="assets/song-search-results.jpg" width="828" height="1792" aria-label="Silent screen recording of LyricsHub song identification, search, Practice Mode, and queue">
+            <source src="assets/lyricshub-hero-demo.mp4" type="video/mp4">
+            Your browser does not support this video. Use the App Store button to explore LyricsHub.
+          </video>
+        </div>
+        <div class="demo-copy">
+          <h3>One song, a few ways to find it.</h3>
+          <p>Start with a song title or artist, or identify music nearby. Then open the song’s available lyrics and continue in Practice Mode.</p>
+          <ul class="demo-facts">
+            <li>Actual iPhone app interactions</li>
+            <li>Practice Mode and saved-queue views</li>
+            <li>Silent demo; lyric text is obscured</li>
+          </ul>
+          <p>Save songs to your practice queue and return to them when you’re ready.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section class="hero">
-  <div class="badge">iOS App · App Store</div>
-  <h1>Remember one lyric?<br><span>Find the song.</span></h1>
-  <p class="hero-sub">Type any fragment you remember — even if the words aren't exact. Lyrics Finder identifies the song and opens the full lyrics in seconds.</p>
-  <a class="hero-cta" href="https://apps.apple.com/us/app/lyrics-finder-song-search/id6748971390" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-    Download Free on the App Store
-  </a>
-  <div class="store-badges" aria-label="Download LyricsHub">
-    <a class="store-badge" href="https://apps.apple.com/us/app/lyrics-finder-song-search/id6748971390" target="_blank" rel="noopener" aria-label="Get LyricsHub on the App Store"><span class="store-icon" aria-hidden="true"></span><span><small>Download on the</small><strong>App Store</strong></span></a>
-    <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.michaellu8.lyricshub" target="_blank" rel="noopener" aria-label="Get LyricsHub on Google Play"><span class="store-icon" aria-hidden="true">▶</span><span><small>GET IT ON</small><strong>Google Play</strong></span></a>
-  </div>
-  <p class="hero-note">Free to download · iPhone, iPad &amp; Android · No microphone needed</p>
-</section>
+  <section class="journey" id="how-it-works">
+    <div class="wrap">
+      <div class="section-heading">
+        <p class="eyebrow">The LyricsHub journey</p>
+        <h2>Find it. Follow it. Come back to it.</h2>
+        <p>Take a song from discovery into your next practice session.</p>
+      </div>
+      <div class="journey-grid">
+        <article class="journey-card"><span class="step">01 · DISCOVER</span><h3>Search or identify</h3><p>Look up a song by title or artist, or identify music playing around you.</p></article>
+        <article class="journey-card"><span class="step">02 · OPEN</span><h3>See available lyrics</h3><p>Choose the song result and open its available lyrics.</p></article>
+        <article class="journey-card"><span class="step">03 · PRACTICE</span><h3>Follow along</h3><p>Use the scrolling lyric view in Practice Mode at your own pace.</p></article>
+        <article class="journey-card"><span class="step">04 · SAVE</span><h3>Keep it for later</h3><p>Add songs to your practice queue and reopen them when you return.</p></article>
+      </div>
+    </div>
+  </section>
 
-<div class="demo">
-  <div class="demo-frame">
-    <video autoplay muted loop playsinline preload="auto">
-      <source src="demo.mov" type="video/mp4">
-    </video>
-  </div>
-</div>
+  <section class="features" id="features">
+    <div class="wrap">
+      <div class="section-heading">
+        <p class="eyebrow">Made for the part after discovery</p>
+        <h2>Make the song yours to practice.</h2>
+      </div>
+      <div class="feature-grid">
+        <article class="feature"><h3>Find a song your way</h3><p>Search by title or artist, or identify music around you.</p></article>
+        <article class="feature"><h3>Open available lyrics</h3><p>Move from a song match to the lyrics available for that track.</p></article>
+        <article class="feature"><h3>Practice at your pace</h3><p>Follow scrolling lyrics in the focused Practice Mode view.</p></article>
+        <article class="feature"><h3>Build your practice queue</h3><p>Save songs and return to them in a later session.</p></article>
+        <article class="feature"><h3>Designed for iPhone</h3><p>Take your music discovery and practice flow with you.</p></article>
+        <article class="feature"><h3>One place to pick up again</h3><p>Reopen a queued song whenever you are ready to practice.</p></article>
+      </div>
+    </div>
+  </section>
 
-<section class="how">
-  <h2 class="how-heading">How it works</h2>
-  <p class="how-sub">No microphone. No humming. Just type what you remember.</p>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <div class="step-title">Type any lyric</div>
-      <div class="step-desc">Enter a fragment you remember — even a rough approximation works.</div>
-    </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <div class="step-title">Song found</div>
-      <div class="step-desc">Lyrics Finder identifies the most likely song and artist in seconds.</div>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <div class="step-title">Full lyrics open</div>
-      <div class="step-desc">Read the complete lyrics, save them, copy, or share — all in one tap.</div>
-    </div>
-  </div>
-</section>
-
-<section class="features">
-  <h2 class="features-heading">Everything a music lover needs</h2>
-  <div class="features-grid">
-    <div class="feature-card highlight">
-      <div class="feature-icon">🔎</div>
-      <div class="feature-title">Find by Lyric Fragment</div>
-      <div class="feature-desc">Type any line you half-remember and get the song title and artist — even when the words aren't perfect.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🎤</div>
-      <div class="feature-title">Full Lyrics</div>
-      <div class="feature-desc">Get complete, accurate lyrics for millions of songs across all genres and eras.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🔍</div>
-      <div class="feature-title">Instant Search</div>
-      <div class="feature-desc">Search by song title or artist name — results appear as you type.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">⭐</div>
-      <div class="feature-title">Save Favorites</div>
-      <div class="feature-desc">Bookmark songs so their lyrics are always one tap away, even offline.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">📋</div>
-      <div class="feature-title">Copy &amp; Share</div>
-      <div class="feature-desc">Copy any lyrics to your clipboard or share them directly with friends in seconds.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🎨</div>
-      <div class="feature-title">Clean, Readable UI</div>
-      <div class="feature-desc">No clutter, no pop-ups. Just beautiful lyrics in a distraction-free layout.</div>
-    </div>
-  </div>
-</section>
-
-<div class="proof">
-  <div class="proof-stats">
-    <div>
-      <div class="stat-num">Millions</div>
-      <div class="stat-label">Songs in the library</div>
-    </div>
-    <div>
-      <div class="stat-num">Free</div>
-      <div class="stat-label">To download</div>
-    </div>
-    <div>
-      <div class="stat-num">Instant</div>
-      <div class="stat-label">Results from one lyric</div>
-    </div>
-  </div>
-</div>
-
-<div class="cta-footer">
-  <h2>Never lose a song again.</h2>
-  <p>Get unlimited lyric-fragment searches, full lyrics, and saved favorites.</p>
-  <a class="hero-cta" href="https://apps.apple.com/us/app/lyrics-finder-song-search/id6748971390" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-    Download Free on the App Store
-  </a>
-</div>
-
-<footer>
+  <section class="final-cta" id="download">
+    <h2>Love a song? Take it to Practice.</h2>
+    <p>Find LyricsHub on the App Store and start with a song you love.</p>
+    <a class="button" href="https://apps.apple.com/us/app/lyrics-finder-song-search/id6748971390" target="_blank" rel="noopener">Download LyricsHub on the App Store <span aria-hidden="true">↗</span></a>
+  </section>
+</main>
+<footer class="wrap">
   <span>© 2026 EBM Apps</span>
-  <div style="display:flex;gap:24px;">
+  <nav class="footer-links" aria-label="Footer navigation">
     <a href="https://apps.ebmapps.cc/">EBM Apps</a>
     <a href="https://apps.ebmapps.cc/privacy/">Privacy Policy</a>
     <a href="mailto:support@ebmapps.cc">Support</a>
-  </div>
+  </nav>
 </footer>
-
 </body>
 </html>
