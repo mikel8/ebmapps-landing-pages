@@ -190,6 +190,23 @@
   </a>
 </div>
 
+<section class="apps" aria-label="Mobile apps" style="margin-top:-44px;margin-bottom:48px;">
+  <a class="app-card" data-cat="ios" href="/image-resizer/" aria-label="Explore Image Resizer for iPhone">
+    <div class="app-icon"><img src="/icons/image-resizer-ios.png" alt="Image Resizer iOS icon"></div>
+    <div class="app-tag ios">iOS</div>
+    <div class="app-name">Image Resizer</div>
+    <div class="app-desc">Resize, compress, crop, and convert photos in one simple iPhone app—then preview the result before saving.</div>
+    <ul class="app-features">
+      <li>Exact dimensions and compression</li>
+      <li>Crop, JPEG, PNG, and WebP</li>
+      <li>Destination presets and batch processing</li>
+      <li>Reusable workflows and preview</li>
+    </ul>
+    <span class="app-cta ios">Explore App</span>
+    <div class="app-plans">Free editing · Optional one-time Remove Ads</div>
+  </a>
+</section>
+
 <!-- CHROME EXTENSIONS LABEL -->
 <div class="section-label" id="label-extensions">Browser tools</div>
 
@@ -256,7 +273,7 @@
 
 <div class="stats">
   <div>
-    <div class="stat-num">5</div>
+    <div class="stat-num">6</div>
     <div class="stat-label">Apps &amp; tools</div>
   </div>
   <div>
@@ -311,7 +328,7 @@
     } else if (tab === 'ios') {
       featured.classList.remove('hidden');
       labelExt.classList.add('hidden');
-      cards.forEach(c => c.classList.add('hidden'));
+      cards.forEach(c => c.classList.toggle('hidden', c.dataset.cat !== 'ios'));
     }
   }
 
